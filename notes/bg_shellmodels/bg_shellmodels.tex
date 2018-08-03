@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{standalone} 
+\usepackage{amsmath}
+\usepackage[margin=1in, paperwidth=8.5in]{geometry}
+\usepackage{dsfont}
+%\usepackage{tikz}   
+%\usetikzlibrary{decorations.pathmorphing}
+%\usetikzlibrary{patterns,snakes}
+\usepackage{wrapfig}
+\usepackage{cite}
+
+\def \iint {\int_{0}^{T}\int_{D}}
+\def \arg {(\mathbf{x},t)}
+
+
+\begin{document}
+
+These are notes on the book "Turbulence and Shell Models" by Peter D. Ditlevsen (referred as PD) and "A First Course in Turbulence" by H. Tennekes and J. L. Lumley (referred to as TL).
+
+\subsection{Introduction}
+
+\begin{itemize}
+\item Richardson (1922) described phenomenology of turbulence.
+\item This work was further quantified by Kolmogorov's (1941) scaling theory.
+\item Obukhov (1971) and Gledzer (1973) introduced shell models of turbulence which provided scaling laws similar to those found in Kolmogorov Theory. 
+\item Shell models typically obey conservation laws and symmetries of the Navier-Stokes Equation. 
+\end{itemize}
+
+\subsection{Navier-Stokes Equation}
+
+\begin{itemize}
+\item A fluid is completely characterized by the following variables:
+	\begin{itemize}
+		\item velocity field: $\mathbf{v(\mathbf{x},t)}$
+		\item pressure field: $p(\mathbf{x},t)$
+		\item temperature field: $T(\mathbf{x},t)$
+		\item density field:$\rho (\mathbf{x},t)$
+	\end{itemize}
+\item Thus, it is necessary to specify 6 equations (Notice that the velocity field counts as 3 unknown variables). These equations are the following:
+	\begin{itemize}
+		\item momentum equation (3 equations for each component)
+		\item mass conservation
+		\item energy conservation
+		\item equation of state.
+	\end{itemize}
+\item The common assumption of incompressiblity causes the equation for mass conservation to simplify to 
+\begin{equation}
+\label{eq:incompressible}
+\partial_{i}u_{i}=0.
+\end{equation}
+We will use tensor notation and the Einstein convention for summing of repeated indices. A further common assumption is to ignore bouyancy which leads to the Navier-Stokes Equation(NSE)
+\begin{equation}
+\label{eq:nse}
+\partial_{t}u_{i}+u_{j}\partial_{j}u = -\partial_{i}p+\nu\partial_{jj}u_{i}+f_{i}
+\end{equation}
+With equations \ref{eq:nse} and  \ref{eq:incompressible}, we can determine pressure and the velocity field. 
+\item If we take the divergence of \ref{eq:nse} and utilize \ref{eq:incompressible} to simplify, we arrive at the following poisson equation to determine pressure from the velocity field. 
+\[\partial_{ii}p=-\partial_{i}u_{j}\partial_{j}u_{i}\]
+\item If you choose U as the characteristic velocity scale and L as the characteristic length scale, then the dimensionless form of NSE becomes 
+\begin{equation}
+\label{eq:nse-dless}
+\partial_{t}u_{i}+u_{j}\partial_{j}u = -\partial_{i}p+ Re^{-1}\partial_{jj}u_{i}+f_{i}
+\end{equation}
+where \[Re \equiv \frac{UL}{\nu}\] is the Reynolds Number which expresses the "relative importance of viscosity compared to nonlinear terms."
+\item Small Reynold numbers produce smooth regular flow.
+\item At large enough Reynold numbers (~2000 (TD pg 7)), the flow becomes turbulent which is characterized by "apparently random motion" and the development of motion at a large range of length scales.
+\item As described by TL, turbulence is described by
+	\begin{itemize}
+		\item Irregularity
+		\item Diffusivity
+		\item Large Reynolds Numbers
+		\item 3D vorticity fluctuations
+		\item Dissipation
+		\item Continuum
+		\item Turbulent flows are flows - meaning that "turbulence is not a feature of fluids but of fluid flows."
+		
+	\end{itemize}
+\item Richardson described turbulence as when the large swirls in a fluid break up into smaller swirls which break up into even smaller swirls and so forth until the swirls are at a small enough length scale so that viscosity smooths out this motion. Thus, energy starting at the larger length scales is eventually dissipated at the lower length scales by viscosity. 
+\item "Statistical studies of the equations of motion always lead to a situation in which there are more unknowns than equations. This is called the closure problem of Turbulence." (TD, PG.4) One depends on experimental evidence for justification of introduced equations to solve this issue. However, it remains "nearly impossible to make accurate quantitative predictions without relying heavily on emperical data".(TD, PG.4)
+
+\end{itemize}
+
+\subsection{Kolmogorov's 1941 Theory}
+
+\begin{itemize}
+	\item By dimensionality and physical arguments, Kolmogorov arrives at the following relation between the typical velocity difference $\delta u$ for a given distance $l$,
+	\[\delta u \sim (\epsilon l)^{1/3}\]
+\end{itemize}
+
+\subsection{The Spectral Navier-Stokes Equation}
+\begin{flushleft}
+
+
+Consider the fourier transform applied to the velocity field,
+\[
+u_{i}(\mathbf{k})=\frac{1}{(2\pi)^{3}}\int \exp{-i\mathbf{k}\cdot\mathbf{x}}u_{i}(\mathbf{x}d\mathbf{x}
+\]
+\[
+u_{i}(\mathbf{x})=\frac{1}{(2\pi)^{3}}\int \exp{i\mathbf{k}\cdot\mathbf{x}}u_{i}(\mathbf{k}d\mathbf{k}
+\]
+
+%DERIVE LATER!!
+
+One can obtain the spectral NSE (See PD, pg 9)
+\[
+\partial_{t}u_{i}(\mathbf{k})=
+-ik_{j}\int \left(\delta_{I}-\frac{k_{i}k_{l}}{k^{2}}\right) u_{j}(\mathbf{k}') u_{l}(\mathbf{k}-\mathbf{k}')d\mathbf{k}' -\nu k^{2}u_{i}(\mathbf{k})+f(\mathbf{k}).
+\]
+
+\end{flushleft}
+
+\end{document}

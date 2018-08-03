@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{standalone}
+\usepackage{amsmath}
+\usepackage[margin=1.0in, paperwidth=8.5in]{geometry}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{cite}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{IEEEtrantools}
+\usepackage{authblk}
+\usepackage{setspace}
+
+\begin{document}
+
+\title{All $H^{\alpha}$ norms decay at equal rate in the long run.}
+\author{}
+\date{\today}
+
+
+\maketitle
+
+
+Let $\rho(\mathbf{k},t)=\frac{|\theta(\mathbf{k},t)|^{2}}{\|\theta\|^{2}_{L^2}}$ be a discrete probability distribution function over all modes $\mathbf{k}$.  The moments of the distribution are given by the ratio of $H^{\alpha}$ and $L^{2}$
+\begin{equation}
+\langle \mathbf{k}^{2\alpha} \rangle=\sum_{\mathbf{k}\neq 0} \mathbf{k}^{2\alpha}\rho(\mathbf{k},t) = \frac{\|\theta\|_{H^{\alpha}}^2}{\|\theta\|_{L^{2}}^2}.
+\end{equation}
+If $\rho(\mathbf{k},t)$ reaches a stationary distribution ($\frac{\partial}{\partial t}\rho(\mathbf{k},t) = 0$), then all moments are also constant in time. 
+
+From our local-in-time optimization study through numerical simulations, $\rho$ approaches a nearly stationary distribution. From this finding, we assume that
+\begin{equation}
+\frac{d}{dt}\left(\frac{\|\theta\|_{H^{\alpha}}^2}{\|\theta\|_{L^{2}}^2}\right) \approx 0 
+\end{equation}
+ in the long run for local-in-time optimal flows. Therefore, we find that 
+\begin{equation}
+\|\theta\|_{L^{2}}^2\frac{d}{dt}\|\theta\|_{H^{\alpha}}^2 -\|\theta\|_{H^{\alpha}}^2\frac{d}{dt}\|\theta\|_{L^{2}}^2 \approx 0.
+\end{equation}
+Therefore,
+\begin{equation}
+\frac{d}{dt}\|\theta\|_{H^{\alpha}}^2 \approx \frac{\|\theta\|_{H^{\alpha}}^2}{\|\theta\|_{L^{2}}^2}\frac{d}{dt}\|\theta\|_{L^{2}}^2. 
+\end{equation}
+Given the fact that $\frac{d}{dt}\|\theta\|_{L^{2}}^2 = -2\kappa \|\theta\|_{H^{1}}^{2}$, we have that
+\begin{equation}
+\frac{d}{dt}\|\theta\|_{H^{\alpha}}^2 \approx -2\kappa\frac{\|\theta\|_{H^{1}}^2}{\|\theta\|_{L^{2}}^2} \|\theta\|_{H^{\alpha}}^{2}. 
+\end{equation}
+Therefore, $\|\theta\|_{H^{\alpha}}$ decays at a constant rate of $-\kappa\frac{\|\theta\|_{H^{1}}^2}{\|\theta\|_{L^{2}}^2}$.
+
+\end{document}

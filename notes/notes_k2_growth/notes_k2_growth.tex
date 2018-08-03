@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{standalone}
+\usepackage{amsmath}
+\usepackage[margin=1.0in, paperwidth=8.5in]{geometry}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{cite}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{IEEEtrantools}
+\usepackage{authblk}
+\usepackage{setspace}
+
+\begin{document}
+
+\title{Notes on growth of $\langle k^2 \rangle$}
+\author{}
+\date{\today}
+
+\maketitle
+
+
+\begin{equation}
+\frac{d}{dt}\|\theta\|_{L^{2}}^2=  - 2\kappa \|\nabla \theta\|_{L^{2}}^2
+\end{equation}
+
+\begin{equation}
+\frac{d}{dt}\|\nabla\theta\|_{L^{2}}^2= - 2\int \partial_{i}u_{j}\partial_{i}\theta\partial_{j}\theta - 2\kappa \|\Delta\theta\|_{L^{2}}^2
+\end{equation}
+
+\begin{subequations}
+\begin{align}
+\frac{d}{dt}\left(\frac{\|\nabla\theta\|_{L^{2}}^2}{\|\theta\|_{L^{2}}^2}\right) &= \frac{\|\theta\|_{L^{2}}^2\frac{d}{dt}\|\nabla\theta\|_{L^{2}}^2-\|\nabla\theta\|_{L^{2}}^2\frac{d}{dt}\|\theta\|_{L^{2}}^2}{\|\theta\|_{L^{2}}^4}\\
+&= \frac{-2\int \partial_{i}u_{j}\partial_{i}\theta\partial_{j}\theta - 2\kappa \|\Delta\theta\|_{L^{2}}^2}{\|\theta\|_{L^{2}}^2}+2\kappa\frac{\|\nabla\theta\|_{L^{2}}^4}{\|\theta\|_{L^{2}}^4} \\
+&=-2\kappa\left(\frac{\|\Delta\theta\|_{L^{2}}^2}{\|\theta\|_{L^{2}}^2} - \frac{\|\nabla\theta\|_{L^{2}}^4}{\|\theta\|_{L^{2}}^4} \right) - \frac{2\int \partial_{i}u_{j}\partial_{i}\theta\partial_{j}\theta }{\|\theta\|_{L^{2}}^2}.
+\end{align}
+\end{subequations}
+
+If we define the following
+\begin{equation}
+\langle k^2 \rangle \equiv \frac{\|\nabla\theta\|_{L^{2}}^2}{\|\theta\|_{L^{2}}^2},
+\end{equation}
+\begin{equation}
+\langle k^4 \rangle \equiv \frac{\|\Delta\theta\|_{L^{2}}^2}{\|\theta\|_{L^{2}}^2},
+\end{equation}
+and
+\begin{equation}
+\sigma^2= \langle k^4 \rangle - \langle k^2 \rangle^2,
+\end{equation}
+then we can write the growth of $\langle k^2\rangle$ as
+\begin{equation}
+\frac{d}{dt}\langle k^2 \rangle  =  -2\kappa\sigma^{2}- \frac{2\int \partial_{i}u_{j}\partial_{i}\theta\partial_{j}\theta }{\|\theta\|_{L^{2}}^2}.
+\end{equation} 
+
+We would like to solve: 
+
+\begin{equation}
+\max_{\theta}\max_{\mathbf{u}} \frac{d}{dt}\langle k^2 \rangle 
+\end{equation}
+
+or equivalently
+\begin{equation}
+\max_{\theta}\max_{\mathbf{u}} \int \mathbf{u}\cdot \nabla \theta \Delta \theta
+\end{equation}
+subject to 
+\begin{equation}
+\|\nabla\mathbf{u}\|_{L^{2}}=\gamma L^{d/2}
+\end{equation}
+The maximization of $\mathbf{u}$ can be solved by the method of Lagrange multipliers to arrive at
+\begin{equation}
+\mathbf{u} = - \gamma L^{d}\frac{\Delta^{-1}\mathds{P}(\nabla \theta \Delta \theta)}{\|\nabla^{-1}\mathds{P}(\nabla\theta \Delta \theta )\|_{L^{2}}}.
+\end{equation}
+
+Now, we maximize over theta (ignoring positive prefactor and taking the square) ,
+
+\begin{equation}
+\max_{\theta}\|\nabla^{-1}\mathds{P}(\nabla\theta \Delta \theta )\|_{L^{2}}^{2}
+\end{equation}
+subject to the constraint 
+\begin{equation}
+\|\nabla \theta\|_{L^2}=GL^{d/2}.
+\end{equation}
+We now find the first variation of the following augmented lagrangian,
+
+\begin{equation}
+\mathcal{L}=\int d^{d}\mathbf{x}|\nabla^{-1}\mathds{P}(\nabla\theta \Delta \theta )|^{2} - \nu \int d^{d}\mathbf{x} \left(|\nabla \theta|^{2} - G^{2}\right).
+\end{equation}
+\begin{subequations}
+\begin{align}
+\frac{\delta \mathcal{L} }{\delta \theta}\cdot \delta \theta = -2\int d^{d}\mathbf{x}\left(
+\Delta^{-1} \mathds{P}(\nabla\theta \Delta \theta)\cdot [\nabla \theta\Delta\delta\theta + \nabla\delta\theta \Delta\theta] - \nu \Delta \theta \delta \theta \right) \\
+ = 2\int d^{d}\mathbf{x}
+[\Delta (\mathbf{v}\cdot \nabla \theta) -  \mathbf{v}\cdot\nabla\Delta\theta + \nu \Delta \theta ] \delta \theta
+\end{align}
+\end{subequations}
+
+where 
+\begin{equation}
+\mathbf{v}\equiv - \Delta^{-1} \mathds{P}(\nabla\theta \Delta \theta)
+\end{equation}
+and 
+
+\begin{equation}
+\frac{\delta \mathcal{L} }{\delta \nu}\cdot \delta \nu = - \int d^{d}\mathbf{x} \left(|\nabla \theta|^{2} - G^{2}\right)\delta \nu
+\end{equation}
+
+We get the following Euler-Lagrange equations:
+
+\begin{subequations}
+\begin{align}
+\label{eq:1stvar_theta} \Delta (\mathbf{v}\cdot \nabla \theta) -  \mathbf{v}\cdot\nabla\Delta\theta +\nu \Delta \theta = 0 \\
+\int d^{d}\mathbf{x} \left(|\nabla \theta|^{2} - G^{2}\right) = 0
+\end{align}
+\end{subequations} 
+
+We will solve the above systems as follows. We pick a fixed $\mu$ and determine the appropriate value of $G$ after satisfying (\ref{eq:1stvar_theta}) by simply calculating $\|\nabla \theta\|_{L^{2}}$.  To solve  (\ref{eq:1stvar_theta}) , we transform this into a time dependent problem once realizing that (\ref{eq:1stvar_theta}) is truly the gradient of the cost used in a gradient-ascent algorithm.
+
+\begin{equation}
+\frac{\partial \theta}{\partial t} =\frac{\delta \mathcal{L}}{\delta \theta} = \Delta (\mathbf{v}\cdot \nabla \theta) -  \mathbf{v}\cdot\nabla\Delta\theta +\nu \Delta \theta.
+\end{equation}
+
+We will also try using the pre-conditioner $-\Delta^{-1}$ if necessary.
+
+
+
+\end{document}

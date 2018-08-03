@@ -1,0 +1,16 @@
+*.pdf
+*.aux
+*.log
+*.bbl
+templates
+documentation
+forms
+.envrc
+.direnv
+*.gz
+*.out
+*.blg
+.DS_Store
+*.mp4
+output_*
+*.eps

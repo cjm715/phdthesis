@@ -1,0 +1,194 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{standalone}
+\usepackage{amsmath}
+\usepackage[margin=1.0in, paperwidth=8.5in]{geometry}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{cite}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{IEEEtrantools}
+\usepackage{authblk}
+\usepackage{setspace}
+
+\begin{document}
+
+\title{Vortex Mixing}
+\author{}
+\date{\today}
+
+\maketitle
+\section{Steady plane shear flow}
+\section{C. Eckart (1948) and eddy mixing}
+Carl Eckart \cite{Eckart1948} focused on the time evolution of rms gradient,
+\begin{equation}
+\frac{1}{|V|}\int_{V} |\nabla \theta |^{2} d^{d}\mathbf{x}
+\end{equation}
+to quantify the performance of the stirring in the intermediate stage of mixing characterized by the increase of the average gradient before the final stage of mixing where diffusion destroys gradients and homogenizes the tracer. The rms value evolves according to 
+\begin{equation}
+\label{eq:rate}
+\frac{1}{2}\frac{d}{dt}\frac{1}{|V|}\int_{V} |\nabla \theta |^{2} d^{d}\mathbf{x} = - \kappa \frac{1}{|V|} \int_{V} |\Delta \theta |^{2} d^{d}\mathbf{x}  - \frac{1}{|V|} \int_{V} \nabla \theta \cdot \nabla u \cdot \nabla \theta  d^{d}\mathbf{x}.
+\end{equation}
+Eckart decomposed the tensor $\nabla u$  into its symmetric $(\nabla u)^{S}$ and anti-symmetric parts $(\nabla u)^{A}$ to arrive at
+\begin{equation}
+  \int_{V} \nabla \theta \cdot \nabla u \cdot \nabla \theta  d^{d}\mathbf{x} =   \int_{V} \nabla \theta \cdot [(\nabla u)^{S} + (\nabla u)^{A} ] \cdot \nabla \theta  d^{d}\mathbf{x} = \int_{V} \nabla \theta \cdot (\nabla u)^{S}  \cdot \nabla \theta  d^{d}\mathbf{x}.
+\end{equation}
+Eckart comments on the implications of the independence on the anti-symmetric tensor $(\nabla u)^{A}$. He notes that the components of $(\nabla u)^{A}$ are proportional to the components of the vorticity vector $\mathbf{\omega}$. Specifically, 
+\begin{equation}
+(\nabla u)^{A}_{ij}=\frac{1}{2}\left(\partial_{i}u_{j}-\partial_{j}u_{i}\right)=\frac{1}{2}\epsilon_{kij}\omega_{k}.
+\end{equation}
+Thus, Eckart discovers that last term shown in (\ref{eq:rate}) does {\it not} depend on the vorticity and states
+\begin{quote}
+`` The astonishment at the result arises from the popular confusion of curl or vorticity with eddy motion ...  eddy motion is very effective in mixing, possibly more so than laminar motion. On the other hand, it is a fact that in laminar motion the curl cannot be zero, whereas it is easy to give an example of eddy motion with circular orbits for which the curl vanishes; e.g. $\omega(r) =1/r$. "
+\end{quote} 
+where Eckart refers to $\omega(r)$ as the angular velocity with radius $r$ and not be confused with our use of $\omega$ designated as vorticity.
+
+\section{Vortex Flow Model}
+
+Consider a vortex flow $\mathbf{u}(r)=u_{\varphi}\hat{\varphi}$ in a cylinder of radius $R$.  We consider the evolution the tracer concentration field $\theta(r,\varphi,t)$ given by the advection-diffusion equation,
+
+\begin{equation}
+\label{eq:adv-diff}
+\partial_{t}\theta + \mathbf{u}\cdot \nabla \theta = \kappa \Delta \theta,
+\end{equation}
+where $\kappa$ is the molecular diffusion coefficient.  In cylindrical coordinates, this expression becomes
+\begin{equation}
+\label{eq:adv-diff-cyl}
+\partial_{t}\theta + \frac{u_{\varphi}}{r}\partial_{\varphi}\theta=\kappa \frac{1}{r}\partial_{r}(r\partial_{r}\theta)+\kappa \partial_{\varphi \varphi}^{2}\theta .
+\end{equation}
+Let us decompose $\theta$ as \cite{Kwiatkowski2010, BAJER2001,Rhines1983}
+\begin{equation}
+\label{eq:th_decomp}
+\theta(r,\varphi,t)=f_{n}(r,t)e^{in\varphi}.
+\end{equation}
+Equation (\ref{eq:adv-diff-cyl}) becomes
+\begin{equation}
+\label{eq:adv-diff-f}
+\partial_t f_{n} + \frac{in u_{\varphi}}{r}f_{n} = \kappa \partial_{rr}^{2}f_{n}+ \frac{\kappa}{r}\partial_r f_{n} -\frac{\kappa n^2}{r}f_{n}
+\end{equation}
+We now decompose $f_{n}(r,t)$ as
+\begin{equation}
+f_{n}(r,t)=\sum_{m=-\infty}^{\infty}A_{n,m}(t)r^{m}.
+\end{equation}
+Substituting this decomposition into (\ref{eq:adv-diff-f}) to arrive at
+\begin{equation}
+\sum_{m=-\infty}^{\infty}\left(\partial_{t}A_{n,m} r^m + inu_{\varphi}A_{n,m} r^{m-1} - \kappa m (m-1)A_{n,m}r^{m-2} -  \kappa m A_{n,m}r^{m-2} + \kappa  n^2 A_{n,m} r^{m-2}  \right) = 0
+\end{equation}
+
+\begin{equation}
+\sum_{m=-\infty}^{\infty}\partial_{t}A_{n,m}r^{m} + inu_{\varphi}A_{n,m}r^{m-1} +  \kappa  (n^2 -m^2) A_{n,m} r^{m-2}  = 0
+\end{equation}
+\begin{equation}
+\sum_{m=-\infty}^{\infty}\left[\partial_{t}A_{n,m} +  inu_{\varphi}A_{n,m+1}+  \kappa  (n^2 -(m+2)^2) A_{n,m+2} \right ] r^{m}  = 0
+\end{equation}
+We must satisfy the expression in square brackets for every $n$ and $m$. Notice that the initial condition is give by $A_{n,m}(0)=\delta_{n,1}\delta_{m,1}$. Thus, for any fixed $n\neq 1$, the components $A_{n,m}(t)=0$ for all time t. Therefore, we set $n=1$, remove the index $n$, and arrive at the following requirement for all $m$,
+\begin{equation}
+\label{eq:A}
+\partial_{t}A_{m} +  iu_{\varphi}A_{m+1}+  \kappa  (1 -(m+2)^2) A_{m+2}   = 0
+\end{equation}
+Given the structure of the above equation, it is easy to see that, for all $m\geq 2$, $A_{m}(t)=0$ for all time $t$ since   $A_{m}(0)=0$ for $m\geq 2$. 
+
+Give this truncation, let us change notation for the sake of clarity when solving.  Let us introduce $B_{m}=A_{-m+3}$.
+\begin{equation}
+\label{eq:Bexpansion}
+f_{n}(r,t)=\sum_{m=0}^{\infty}B_{m}(t)r^{-m+3}.
+\end{equation}
+Equation (\ref{eq:A}) becomes
+\begin{equation}
+\label{eq:B}
+\partial_{t}B_{m} +  iu_{\varphi}B_{m-1}+  \kappa  (1 -(5-m)^2) B_{m-2}   = 0 
+\end{equation}
+where $m=2,3,4, \dots$ and $B_{0}(t)=B_{1}(t)=0$ for all time $t$. Our initial condition becomes $B_{n}(0)=\delta_{n,2}$. 
+
+
+It is useful to consider the first few values of $m$ to understand the structure of the recursive differential equation (\ref{eq:B}). Setting $m=2$,(\ref{eq:B}) becomes
+\begin{equation}
+\partial_{t}B_{2}   = 0
+\end{equation}
+with solution $B_{2}(t)=1$ since $B_{n}(0)=\delta_{n,2}$.
+Setting $m=3$, (\ref{eq:B}) becomes
+\begin{equation}
+\partial_{t}B_{3} +  iu_{\varphi}B_{2}  = 0
+\end{equation}
+Thus, the solution is $B_{3}(t)=-iu_{\varphi}t$. Setting $m=4$, (\ref{eq:B}) becomes
+\begin{equation}
+\partial_{t}B_{4} +  iu_{\varphi}B_{3} = 0
+\end{equation}
+with solution $B_{4}(t)=-\frac{u_{\varphi}^2}{2}t^2$. Setting $m=5$, (\ref{eq:B}) becomes
+\begin{equation}
+\partial_{t}B_{5} +  iu_{\varphi}B_{4}+  \kappa  B_{3}   = 0
+\end{equation}
+with solution $B_{5}(t)= \frac{iu_{\varphi}^3}{6}t^3 +  \frac{\kappa iu_{\varphi}t^2}{2}$. 
+
+We would like to solve equation (\ref{eq:B}) in general. Notice that $B_{m}$ is polynomial in time if $B_{m-1}$ and $B_{m-2}$ are polynomial in time since the derivative of $B_{m}$ depends linearly on $B_{m-1}$ and $B_{m-2}$. Since $B_{0}$ and $B_{1}$ are zero and, thus, trivially polynomial, it follows by induction that $B_{m}$ are polynomial in time for all $m$. This allows us to write $B_{m}$ as a Taylor series in time $t$ about $t=0$ as
+\begin{equation}
+\label{eq:taylor}
+B_{m}(t)=\sum_{j=0}^{\infty}\frac{B_{m}^{(j)}(0)}{j!}t^{j}
+\end{equation}
+We  can derive an expression for $B_{m}^{(j)}(0)$ using (\ref{eq:B}). It is useful to rewrite (\ref{eq:B}) in the following matrix form,
+\begin{equation}
+\partial_{t}B=MB
+\end{equation}
+where $M_{j,j-1}=iu_{\varphi}$ and $M_{j,j-2}=\kappa(1-(5-j)^2)$ for $j = 0,1, 2, \dots $, and $M_{j,k}=0$ otherwise. Therefore, the higher derivatives of $B$ are given by 
+\begin{equation}
+B^{(j)}(t)=M^{j}B(t).
+\end{equation} 
+We can evaluate this at time $t=0$ and substitute this result into (\ref{eq:taylor}) to get
+\begin{equation}
+\label{eq:taylor2}
+B_{m}(t)=\sum_{j=0}^{\infty}\frac{[M^{j}B(0)]_{m}}{j!}t^{j}
+\end{equation}
+Substituting this into (\ref{eq:Bexpansion}), we get
+\begin{equation}
+f_{n}(r,t)=\sum_{m=2}^{\infty}\sum_{j=0}^{\infty}\frac{[M^{j}B(0)]_{m}}{j!}t^{j}r^{-m+3}.
+\end{equation}
+Finally, substituting $f_{n}$ into (\ref{eq:th_decomp}), we find that 
+\begin{equation}
+\theta(r,\varphi,t)=\sum_{m=0}^{\infty}\sum_{j=0}^{\infty}\frac{[M^{j}B(0)]_{m}}{j!}t^{j}r^{-m+3}e^{i\varphi}.
+\end{equation}
+
+For the particular initial condition of interest, It can be shown that 
+$j \leq m-2$. Thus,
+\begin{equation}
+\theta(r,\varphi,t)=\sum_{m=2}^{\infty}\sum_{j=0}^{m-2}\frac{[M^{j}B(0)]_{m}}{j!}t^{j}r^{-m+3}e^{i\varphi}.
+\end{equation}
+
+%$B_{m}$ only includes at most two terms of the Taylor expansion (\ref{eq:taylor2}). For odd $m$, we have that
+%\begin{equation}
+%B_{m}(t)=\frac{B_{m}^{\left(\frac{m-1}{2}\right)}(0)t^{\frac{m-1}{2}}}{\left(\frac{m-1}{2}\right)!}.
+%\end{equation}
+%For even $m$,  we have that
+%\begin{equation}
+%B_{m}(t)=\frac{B_{m}^{\left(\frac{m}{2}-1\right)}(0)t^{\frac{m}{2}-1}}{\left(\frac{m}{2}-1\right)!} + \frac{B_{m}^{\left(\frac{m}{2}\right)}(0)t^{\frac{m}{2}}}{\left(\frac{m}{2}\right)!}.
+%\end{equation}
+
+%\begin{equation}
+%\sum_{m=1}^{\infty}\left(\partial_{t}A_{n,m} + inu_{\varphi}A_{n,m} \right) r^m + \sum_{m=-1}^{\infty} \kappa  (n^2 -(m+2)^2) A_{n,m+2} r^{m}  = 0
+%\end{equation}
+%The coefficients for each power of $r$ must be zero. The coefficient for $r^{-1}$ is
+%\begin{equation}
+%\kappa  (n^2 -1)A_{n,1} = 0
+%\end{equation}
+%Therefore, $A_{n,1}(t)=C(t)\delta_{n,1}$.  The coefficient for $r^{0}$ is given by
+%\begin{equation}
+%\kappa  (n^2 -4) A_{n,2} = 0
+%\end{equation}
+%with solution $A_{n,2}(t)=D(t)\delta_{n,2}$. For coefficents of $r^m$ with $m\geq 1$, we find that
+%\begin{equation}
+%\partial_{t}A_{n,m} + inu_{\varphi}A_{n,m} + \kappa  (n^2 -(m+2)^2) A_{n,m+2} = 0
+%\end{equation}
+
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{mixing}
+
+\end{document}

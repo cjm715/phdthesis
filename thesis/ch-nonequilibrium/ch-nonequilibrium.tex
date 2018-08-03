@@ -1,0 +1,61 @@
+
+\section{Introduction}
+
+
+ In the overdamped case, the position $\vec{x}$ of a particle in a fluid experiencing a force $\vec{F}$ and noise due to collisions can be modeled by the following stochastic differential equation known as the Langevin equation,
+\begin{equation}
+\frac{d}{dt} \vec{x} = \frac{\vec{F}(\vec{x},t)}{m\gamma} +\sqrt{\frac{2k_{B}T}{m\gamma}}\vec{\xi}(t),
+\label{eq:langevin}
+\end{equation}
+where $k_{B}$ is the Boltzmann constant, $T$ is the fluid temperature, and $\vec{\xi}(t)$ is white noise forcing. It is known that such stochastic dynamics can be studied through its corresponding Fokker-Planck equation given by 
+\begin{equation}
+\frac{\partial}{\partial t} \rho (\vec{x},t)  = - \nabla \cdot \left(\frac{\vec{F(\vec{x},t)}}{m\gamma} \rho (\vec{x},t) \right) + \frac{k_{B}T}{m\gamma} \nabla^{2} \rho (\vec{x},t)
+\label{eq:fpe}
+\end{equation} 
+where $\rho(\vec{x},t)$ is the probability density of a particle being at position $\vec{x}$ at time $t$. This equation dictates the time evolution of the probability density of a single particle through phase space. In other words, equation \eqref{eq:fpe} is the continuity equation of probability. Equation \eqref{eq:fpe} is a key equation within non-equilibrium statistical mechanics and can be unrealistic to solve for all cases of $\vec{F}$, especially with time-dependence. It can be quite challenging to say much about the solution $\rho (\vec{x},t)$ in generality.
+
+A connection between equation \eqref{eq:fpe}  and fluid mechanics could be explored to make progress on understanding the dynamics of $\rho$ given these challenges. Equation \eqref{eq:fpe} can be viewed as the advection-diffusion equation appearing in fluid mechanics,
+\begin{equation}
+\frac{\partial}{\partial t} \rho (\vec{x},t)  = - \nabla \cdot \left(\vec{u} (\vec{x},t)  \rho (\vec{x},t) \right) + \kappa \nabla^{2} \rho (\vec{x},t),
+\label{eq:ade}
+\end{equation}
+where $\frac{\vec{F}(\vec{x},t)}{m\gamma}$ is interpreted as a fluid flow $\vec{u}(\vec{x},t)$, $\frac{k_{B}T}{m\gamma} $ is the molecular diffusion $\kappa$, and $\rho$ is the dye concentration field.
+In this perspective, the transport of $\rho$ due to deterministic processes is controlled by the advection of the flow $\vec{u}$. Advection is the transport of a quantity due to bulk fluid motion given by $\vec{u}$. The transport of $\rho$ due to stochastic process is controlled by diffusion with coefficient $\kappa$. In the context of mixing, it has been found that the interaction between advection and diffusion can cause interesting effects on the mixing rate. In this proposed work, we hope to explore how this interaction affects entropy production in the context of Langevin dynamics.
+
+Equation \eqref{eq:ade} appears in the context of fluid mixing. In this case the structure of $\mathbf{u}(\mathbf{x},t)$ can be quite complicated and rich in general. To deal with the complexity of $\vec{u}$ and say something about $\rho$ in generality, an approach taken within the fluid mixing research community is to  consider macroscopic (or bulk) quantities of $\vec{u}$ and $\rho$ and try to determine general principles relating these quantities. A similar perspective and framework is taken here for studying Langevin dynamics.
+
+The macroscopic quantity of $\rho$ is taken to be the entropy of $\rho$ given by
+%
+ \begin{equation}
+S[\rho] = - \int \rho(\vec{x},t) \ln \rho(\vec{x},t) d\vec{x}.
+\end{equation}
+%
+As for a macroscopic quantity for $\vec{F}$, a natural choice is $K = \int \rho|\vec{u}(\vec{x},t)|^2 d\vec{x}$ which is the kinetic energy if one makes the identification $\mathbf{u}=\frac{\vec{F}(\vec{x},t)}{m\gamma}$. $R$ could also be viewed as a measure of `roughness' of a potential $\varphi$ by observing that $R = \int |\vec{F}(\vec{x},t)|^2 d\vec{x} = \int |\nabla \varphi(\vec{x})|^2 d\vec{x}$ if $\vec{F} = - \nabla \varphi ( \vec{x})$. With these choices, we ask ``what is maximum rate  of entropy production given the roughness of a potential?" 
+
+
+
+\section{Results}
+
+We consider the time evolution of $\rho$ on a periodic box of side length $L$. We pose the following optimization problem:
+%
+\begin{equation}
+\max_{\vec{u}} \frac{d}{dt}S[p]
+\end{equation}
+%
+subject to \eqref{eq:ade}, $\vec{u}= - \nabla \varphi$, and  $\|\vec{u}\|_{L^{2}}=(\int |\vec{u}(\vec{x},t)|^2 d\vec{x})^{1/2} = UL^{d/2}$. The rate of entropy production is given by 
+%
+\begin{equation}
+\frac{d}{dt}S = -\int \left[ \vec{u}\cdot\nabla\rho - \kappa \frac{|\nabla \rho|^2}{\rho} \right] d\vec{x}.
+\end{equation}
+%
+Thus, one finds that the optimal $\vec{u}$ is 
+%
+\begin{equation}
+\vec{u} = - \left(\frac{UL^{d/2}}{\| \nabla \rho \|_{L^2}}\right) \nabla \rho.
+\label{eq:optimalu}
+\end{equation}
+Note that we did not have to actively enforce the constraint $\vec{u}= - \nabla \varphi$ since \eqref{eq:optimalu} is already of this form. 
+
+
+
+

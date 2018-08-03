@@ -1,0 +1,88 @@
+
+
+% shell model
+% Analytic results for 3 shell truncation
+% Batchelor scale limitation
+% Not much difference between lit and git
+
+In this dissertation, new results on the optimization of mixing are uncovered. In the first study on optimization of a shell model, it is discovered that the mixing rate is limited by the presence of diffusion. We investigated both local- and global-in-time optimization for various shell model truncations. The 3-shell model was particularly informative since analytical solutions for Euler-Lagrange equations were obtained by using methods familiar to the theory of nuclear magnetic resonance. These analyses demonstrated clearly how the global-in-time optimization strategy  can outperform the local-in-time optimization scheme by a clever  `rotation' in state space.
+
+In the local-in-time optimization study of the advection-diffusion equation, it is demonstrated numerically that a generalized Batchelor length scale places restrictions on the rate of mixing. Many other observations from the shell model also carried over to this setting.  For the enstrophy constrained problem, the long-term mixing rate is shown to be independent of diffusion coefficient. For the energy-constrained problem, we found that the mixing rate was dependent on diffusion coefficient in a perhaps surprising way --- increased diffusion can {\it decrease} the mixing rate as measured by the $H^{-1}$ norm. Diffusion is usually thought to benefit mixing as it tends to homogenize dye throughout a fluid, so its detrimental effect on the process is unexpected.
+
+Finally, results are presented on our ongoing project on global-in-time optimization. In this study, we found that it is optimal to use the stirring budget uniformly in time when we only demanded that the {\it time-averaged} enstrophy be a desired fixed value. We also found this to be the case for the energy-constrained problem. This is consistent with the work of G. Mathew {\it et al.} \cite{GM2005} that found a uniform use of the stirring budget when controlling a superposition of a restricted set of enstrophy and energy constrained flows. We also presented the global-in-time strategy for a short time period which (as expected) outperformed the local-in-time strategy at the end time. However, the improvement is not dramatic in this short time period.
+
+
+Global-in-time optimization is computationally challenging due to the large dimensionality of the search space. Improvements are being considered such as employing other gradient descent and line search methods. The primary bottleneck in the algorithm is the computation of gradient with respect to $\mathbf{u}$ (and equally true for the computation of the `target' velocity field) which requires time integration forwards and backwards in time. Methods for approximating this gradient would be valuable to speed up the computation, especially at earlier iterations where precision is not necessary until near the convergence point. The inclusion of diffusion will most likely require a formulation with inequality intensity constraints since it is not obvious that the intensity budget will be saturated given the argument of the previous chapter. In terms of future  theoretical and analytic work on global-in-time optimization, it is still important to determine the existence and uniqueness of optimizers for the presented problem. What function space restriction is necessary to ensure that a minimizer exists? 
+
+These studies suggest the following questions to the mixing community:
+\begin{itemize}
+\item Can one demonstrate the mixing rate limitation of the Batchelor scale rigorously? What are the restrictions on the control $\mathbf{u}$ for this limitation to hold? Can one construct a flow that surpasses the Batchelor scale in the long-run?
+
+\item Related to the previous question, can one derive a single exponential lower bound of the $H^{-1}$ norm with diffusion for energy or enstrophy stirring intensity constraints? Without diffusion, the rate is shown to depend on the support of the initial condition \cite{GI2014}. How does diffusion affect this dependence on the initial condition?
+\end{itemize}
+
+
+It is natural to ask ``Are optimal flows as defined feasible?" and ``How would one generate such flows in reality?" The purpose of this study is not to tackle these questions directly since our formulation is not entirely suitable for these questions. The purpose of this study is to consider idealized mixing to provide expectations in the best-case scenario with absolute control over the velocity field under the assigned constraints. In reality absolute control is generally not obtainable. 
+
+Although we do not fully address feasibility in the series of studies presented here, we acknowledge that feasibility is an important issue and encourage research in this direction. With the goal of feasibility in mind, we can work backwards from a desired flow $\mathbf{u}$ to obtain the required forcing $\mathbf{f}$ on a fluid. This can be found by simply substituting a discovered (local- or global-in-time) optimal velocity field $\mathbf{u}$ into the Navier-Stokes equation to find:
+
+\begin{equation}
+\label{eq:ns}
+\mathbf{f} = \rho\partial_{t} \mathbf{u}  + \rho\mathbf{u}\cdot \nabla \mathbf{u} + \nabla p - \mu \Delta \mathbf{u} 
+\end{equation}
+where $\rho$ is the fluid density, $\mu$ is the viscosity, $p$ is the fluid pressure, and $\mathbf{f}$ is the required forcing. If $\mathbf{f}$ and the initial condition $\mathbf{v}_0(\mathbf{x})=\mathbf{u}(\mathbf{x},0)$ are given, the solution $\mathbf{v}$ to the Navier-Stokes equation, $\rho\partial_{t} \mathbf{v}  + \rho\mathbf{v}\cdot \nabla \mathbf{v} = - \nabla p + \mu \Delta \mathbf{v} +\mathbf{f}$, is precisely the desired flow field: $\mathbf{v} = \mathbf{u}(\mathbf{x},t)$. The next natural question is ``How could you construct a mixing device to create the forcing $\mathbf{f}$?'' Although we do not provide an answer, the derived forcing $\mathbf{f}$ at least gives us a target to aim for when tasked with the engineering problem of designing a mechanical mixer that realizes the flow $\mathbf{u}$. 
+
+%Note that the power injected by external forcing on fluid is eventually exhausted by viscous dissipation in the fluid. The viscous power dissipation rate is $\nu\int_{D}|\nabla \mathbf{u}|^2 \, d\mathbf{x}$
+
+The required mechanical power to operate a mixing device is also useful measure for evaluating feasibility. For instance if the mechanical power blows up in finite time, this would rule out its feasibility. The mechanical power $P$ expended by an agent exerting the force $\mathbf{f}$ on the flow can be found by multiplying \eqref{eq:ns} by $\mathbf{u}$ and integrating over the domain $D$ to arrive at
+ \begin{equation}
+ \label{eq:mech_power}
+P = \sint{\mathbf{f}\cdot\mathbf{u}} = \ddt{}\left( \frac{\rho}{2}\sint{|\mathbf{u}|^2}\right) + \mu\sint{|\nabla\mathbf{u}|^2}
+\end{equation}
+Note that, for the enstrophy-constrained case, the last term on the right-hand side of \eqref{eq:mech_power} is constant. Thus the required mechanical power changes in time according to the rate of change of the total kinetic energy. For the energy-constrained case, the first term on the right-hand side of \eqref{eq:mech_power} vanishes. Therefore the mechanical power is proportional to the enstrophy of the flow which could potentially increase dramatically due to the development of small length scales. Note for inviscid flows the power in the energy case is zero.
+
+
+
+%where the left-hand side is identified as the mechanical power $P$ injected into the fluid by the external forcing $\mathbf{f}$, $ \frac{\rho}{2}\sint{|\mathbf{u}|^2}$ is the total kinetic energy, and $\sint{|\nabla\mathbf{u}|^2}$ is the enstrophy. 
+%
+%
+%Under the enstrophy-constrained case, we have
+%\begin{equation}
+%P = \ddt{}\left( \frac{\rho}{2}\sint{|\mathbf{u}|^2}\right) + \nu\Gamma^2 L^d.
+%\end{equation}
+%The associated mechanical energy $E = \int_0^{T} P(t) dt$ is 
+%\begin{equation}
+%E = \left( \frac{\rho}{2}\sint{|\mathbf{u}(\mathbf{x},T)|^2} - \frac{\rho}{2}\sint{|\mathbf{u}(\mathbf{x},0)|^2}\right) + \nu\Gamma^2 L^d T.
+%\end{equation}
+%By Poincare's inequality we find that 
+%\[
+%E \leq \frac{\rho}{4\pi}\Gamma^2L^{d+2}  + \nu \Gamma^2L^dT.
+%\]
+%Thus, we see that the mechanical power $P$ required over time depends on the rate of total kinetic energy associated with the flow $\mathbf{u}$. However, the total mechanical energy $E$ is guaranteed to stay bounded from above by a quantity linearly proportional to enstrophy quantified by $\Gamma^2 L^d$.  Although the construction of a mechanical mixer enforcing $\mathbf{f}$ remains a challenge, the amount of mechanical energy required to enforce the enstrophy constraint is sensible --- in the sense that the above energetic analysis does not rule out its physical feasibility (the mechanical energy $E$ does not diverge in time for instance). 
+%
+%
+% Under the energy-constrained case, the mechanical power is
+%\begin{equation}
+%\label{eq:energy-power}
+%P = \nu\sint{|\nabla\mathbf{u}|^2}
+%\end{equation} 
+%and the mechanical energy is
+%\begin{equation}
+%\label{eq:energy-energy}
+%E = \nu\int_0^{T}\sint{|\nabla\mathbf{u}|^2}dt
+%\end{equation} 
+%Thus, the amount of mechanical power is proportional to the amount of enstrophy or viscous energy dissipation rate. The development of small length scales is not penalized under energy-constrained flows thus this could result in \eqref{eq:energy-power} growing over time. This will certainly be the case under the checkerboard flow without diffusion. In the case with diffusion, we will demonstrate in later chapters the presence of a limiting length scale in the concentration field $\theta$ proportional to a generalized Batchelor scale $\lambda_{U} = \frac{\kappa}{U}$. For the present analysis, note that it does not seem beneficial for mixing to generate length scales in the velocity field significantly smaller than those present in the concentration field.  If we assume that the Fourier spectrum is peaked around the wavenumber $\frac{2\pi}{\lambda_{U}}$ at later times after the developing the smallest length scale $\lambda_U$. Then, we hypothesize that, during this later stage, the mechanical power scales according to 
+%\begin{equation}
+%\label{eq:power-expectation}
+%P \sim \nu \frac{(2\pi)^2}{\lambda_{B}^2}U^2 L^d  = \nu \frac{(2\pi)^2}{\kappa^2}U^4 L^d.
+%\end{equation}
+%Note the scaling with $\nu$, $\kappa$, and $U$. As $\kappa$ decreases, this increases the mechanical power. We will see in later chapters that a decrease in $\kappa$ is also accompanied by a beneficial {\it increase} in the mixing rate. Thus, this presents a trade off between these potential objectives: mixing efficiency and mechanical power. 
+%
+%In both enstrophy- and energy- constrained cases, it is beneficial to have a lower viscosity $\nu$. This is especially important for the energy-constrained case where the mechanical power is proportional to $\nu$.
+
+
+
+
+
+
+

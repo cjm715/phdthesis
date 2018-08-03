@@ -1,0 +1,513 @@
+
+
+\section{Lower bound for non-diffusive enstrophy-constrained case}
+\label{appendix:lower_bound_enstorphy_nodiff}
+Recall equation (\ref{eq:deriv_mix_norm}) from section \ref{sec:LIT}:
+\begin{equation}
+	\label{eq:deriv_mixnorm_nodiff}
+	\frac{d}{dt} \| \theta (t) \|^{2}_{h^{-1}} = 2 \sum_{n=1}  \left(k_{n+1}^{-2}-k_{n}^{-2}\right)\theta_{n}\theta_{n+1}k_{n}u_{n}
+\end{equation}
+using $\kappa =0$ since we are considering the non-diffusive case. Rewrite (\ref{eq:deriv_mixnorm_nodiff}) as
+\begin{equation}
+	\frac{d}{dt} \| \theta (t) \|^{2}_{h^{-1}} = v\cdot w
+\end{equation}
+where $v$ and $w$ are infinite-dimensional vectors with components $v_{n}=k_{n}u_{n}$ and $w_{n}= 2\left(k_{n+1}^{-2}-k_{n}^{-2}\right)\theta_{n}\theta_{n+1}$ respectively. Using Cauchy-Schwarz  and  $\|v\|_{l^{2}}=\|u\|_{h^{1}}$, we have
+\begin{equation}
+	\label{eq:cauchy-schwarz_nodiff_enstrophy}
+	\frac{d}{dt} \| \theta (t) \|^{2}_{h^{-1}} \geq - \|u\|_{h^{1}}\| w\|_{l^{2}}.
+\end{equation}
+$\|w\|_{l^{2}}$ and $\|\theta\|_{h^{-1}}$ are related by the following estimates and manipulations:
+\begin{eqnarray}
+	\|w\|_{l^{2}} &=& \sqrt{4\sum_{n=1} (k^{-2}_{n}-k^{-2}_{n+1} )^{2}\theta_{n}^{2}\theta_{n+1}^{2}}\\
+	&= & \sqrt{ 9\sum_{n=1}  k^{-2}_{n}k^{-2}_{n+1} \theta_{n}^{2}\theta_{n+1}^{2}}   \text{ (using $k_{n+1}=2 k_{n}$) }\\
+	& = & 3\sqrt{ \sum_{n=1} ( \theta_{n}^{2}k_{n}^{-2}) ( \theta_{n+1}^{2}k_{n+1}^{-2})}  \\
+	&\leq  & 3\sqrt{ \sum_{n=1} ( \theta_{n}^{2}k_{n}^{-2}) \sum_{m=1} ( \theta_{m}^{2}k_{m}^{-2})} \\
+	&= & 3\sqrt{\|\theta\|_{h^{-1}}^2\|\theta\|_{h^{-1}}^2} \\
+	&= & 3\|\theta\|_{h^{-1}}^2
+\end{eqnarray}
+Using this with (\ref{eq:cauchy-schwarz_nodiff_enstrophy}), we conclude
+\begin{equation}
+	\label{eq:enstrophy_bound}
+	\frac{d}{dt} \| \theta  \|^{2}_{h^{-1}} \geq - 3\|u\|_{h^{1}}\|\theta\|_{h^{-1}}^2.
+\end{equation}
+If $\|u(t)\|_{h^{1}}$ is in $L^{1}([0,T])$, then we can use Gr\"{o}nwall's inequality to deduce
+\begin{equation}
+	\label{eq:bound_enstrophy_no_diff}
+	\| \theta (t) \|_{h^{-1}} \geq \|\theta (0)\|_{h^{-1}} \exp \left( - \frac{3}{2}\int_{0}^{t}\|u(t')\|_{h^{1}} dt' \right).
+\end{equation}
+
+
+\section{Lower bound for non-diffusive energy-constrained case}
+\label{appendix:bound_energy_no_diff}
+Now we choose to represent equation (\ref{eq:deriv_mix_norm}) with $\kappa = 0$ in the following alternative form:
+\begin{equation}
+	\label{eq:energy_decomposition}
+	\frac{d}{dt} \| \theta (t) \|^{2}_{h^{-1}} =u\cdot y
+\end{equation}
+where $y$ is an infinite-dimensional vectors with components \[y_{n}= 2k_{n}\left(k_{n+1}^{-2}-k_{n}^{-2}\right)\theta_{n}\theta_{n+1}.\] Using Cauchy-Schwarz, we find that
+\begin{equation}
+	\frac{d}{dt} \| \theta (t) \|^{2}_{h^{-1}} \geq - \|u\|_{l^{2}}\| y\|_{l^{2}}
+\end{equation}
+By similar techniques seen for bounding $\|w\|_{l^{2}}$ in the previous section, we can  relate $\|y\|_{l^{2}}$ to $\|\theta\|_{h^{-1}}$  and $\|\theta\|_{l^{2}}$ as follows:
+\begin{eqnarray}
+	\|y\|_{l^{2}} &=& \sqrt{4\sum_{n=1}k^{2}_{n} (k^{-2}_{n}-k^{-2}_{n+1} )^{2}\theta_{n}^{2}\theta_{n+1}^{2}}\\
+	&= & \sqrt{ 9\sum_{n=1} k^{-2}_{n+1} \theta_{n}^{2}\theta_{n+1}^{2}}   \text{ (using $k_{n+1}=2 k_{n}$) }\\
+	& = & 3\sqrt{ \sum_{n=1} ( \theta_{n}^{2}) ( \theta_{n+1}^{2}k_{n+1}^{-2})}  \\
+	&\leq  & 3\sqrt{ \sum_{n=1}  \theta_{n}^{2} \sum_{m=1} \theta_{m}^{2}k_{m}^{-2}} \\
+	&= & 3\sqrt{\|\theta\|_{l^{2}}^2\|\theta\|_{h^{-1}}^2} \\
+	&= & 3\|\theta\|_{l^{2}}\|\theta\|_{h^{-1}}
+\end{eqnarray}
+Using the relation above with (\ref{eq:energy_decomposition}) and the fact that $\|\theta(t)\|_{l^{2}}=\|\theta(0)\|_{l^{2}}$, we find that
+\begin{eqnarray}
+	\frac{d}{dt} \| \theta \|_{h^{-1}}& \geq & - \frac{3}{2}\|u\|_{l^{2}}\| \theta(0)\|_{l^{2}}.
+\end{eqnarray}
+Therefore, we can obtain the following lower bound provided that  $\|u(t)\|_{l^{2}}$ is in $L^{1}([0,T])$,
+\begin{equation}
+	\label{eq:bound_energy_no_diff}
+	\|\theta (t) \|_{h^{-1}} \geq\|\theta (0) \|_{h^{-1}} -\frac{3}{2}\|\theta(0)\|_{l^{2}}\int_{0}^{t}\|u(t')\|_{l^{2}} dt'.
+\end{equation}
+
+\section{Global-in-time optimal strategy requires uniform use of budget in time}
+\label{appendix:budget_conservation}
+
+It is useful to introduce matrix notation to assist our calculation.  Let 
+\begin{equation}
+B^{(n)} =
+ \begin{bmatrix}
+\ddots&\ddots &\ddots & &   &   &  & \\
+&0  &0&0 &   &   &  & \\
+& & 0& 0 &-k_{n} &  & & \\
+& & & k_{n} & 0 &0 & & \\
+& & & & 0 & 0 &0 &  \\
+& & &  & &  \ddots &  \ddots & \ddots  & \\
+ \end{bmatrix},
+ K =
+ \begin{bmatrix}
+ k_{1} & & &    \\
+ & k_{2} & &   \\
+ & & k_{3} & \\
+ & & &  \ddots  
+ \end{bmatrix} ,
+\end{equation}
+\begin{equation}
+M = K^{-1}K^{-1}, \text{ and } A = \sum_{n} u_{n}B^{(n)}.
+\end{equation}
+With this notation, we can write can write (\ref{eq:first_variation}) with $\kappa = 0$ as 
+\begin{subequations}
+	\begin{align}
+	\label{eq:matrix_terminal}
+	 M\theta(T) - \phi(T) = 0 \\
+	 \label{eq:matrix_adj}
+	 \dot{\phi} - A\phi = 0	\\
+	 \label{eq:matrix_state}
+	 \dot{\theta} - A\theta = 0	\\
+	 \label{eq:matrix_opt}
+	 \phi^{T}B^{(n)}\theta + \mu k_{n}^{2\alpha}u_{n} = 0 \\
+	 \frac{1}{T}\int_{0}^T u^{T}K^{2\alpha}u -W^{(\alpha)} = 0
+	\end{align}
+\end{subequations}
+We calculate that
+\begin{align*}
+\frac{d}{dt}(u^{T}K^{2\alpha}u )&= 2 \sum_{n} u_{n} k_{n}^{2\alpha}\frac{d u_{n}}{dt} & & \\
+&=- \frac{2}{\mu} \sum_{n} u_{n} \left( \phi^{T}B^{(n)}\frac{d\theta}{dt} + \frac{d\phi^{T}}{dt}B^{(n)}\theta\right) & &\text{(using (\ref{eq:matrix_opt}))} \\
+&=- \frac{2}{\mu} \sum_{n} u_{n} \left(\phi^{T}B^{(n)}A\theta + \phi^{T}A^{T}B^{(n)}\theta \right) & &\text{(using (\ref{eq:matrix_adj} and \ref{eq:matrix_state}))} \\
+&=- \frac{2}{\mu} \sum_{n} u_{n} \phi^{T}\left(B^{(n)}A - AB^{(n)}\right)\theta  & & (A^{T}=-A) \\ 
+&=- \frac{2}{\mu} \sum_{n} u_{n} \phi^{T}\left[B^{(n)},A\right]\theta  & & ([\cdot,\cdot] \text{ is the commutator.})\\
+&=- \frac{2}{\mu} \sum_{n}\sum_{m} u_{n}u_{m} \phi^{T}\left[B^{(n)},B^{(m)}\right]\theta  & &\\
+&=0 & & (\text{antisym. w.r.t. $n$ \& $m$}).
+\end{align*}
+Thus, $u^{T}K^{2\alpha}u$ is conserved in time. 
+
+
+\section{Optimal control solution to 3-shell truncated model}
+\label{appendix:oc3tm}
+
+
+By differentiating (\ref{eq:first_variation_optimality}) and simplifying, we find
+
+\begin{eqnarray}
+	\frac{d}{dt}k_1 u_{1} &=& - \frac{1}{ \mu T } (\phi_{1}\theta_{3} -\phi_{3}\theta_{1} )k_2 u_{2}
+	\label{eq:3mode_u1}\\
+	\frac{d}{dt}k_2 u_{2} &=& \frac{1}{ \mu T } (\phi_{1}\theta_{3} -\phi_{3}\theta_{1} )k_1 u_{1}.
+	\label{eq:3mode_u2}
+\end{eqnarray}
+Differentiating the quantity $(\phi_{1}\theta_{3} -\phi_{3}\theta_{1} )$ and using (\ref{eq:first_variation}), you can show that
+\begin{equation}
+	\frac{d}{dt} (\phi_{1}\theta_{3} -\phi_{3}\theta_{1})=0.
+\end{equation}
+Thus, equations (\ref{eq:3mode_u1}) and (\ref{eq:3mode_u2}) take the form
+\begin{eqnarray}
+	\frac{d}{dt}k_1 u_{1} &=& - \omega k_2 u_{2}
+	\label{eq:3mode_u1_new}\\
+	\frac{d}{dt}k_2 u_{2} &=& \omega  k_1 u_{1}
+	\label{eq:3mode_u2_new}
+\end{eqnarray}
+where
+\begin{equation}
+	\omega =  \frac{1}{\mu T}(\phi_{1}\theta_{3} -\phi_{3}\theta_{1})
+\end{equation}
+is a constant. The initial condition $\theta (0) = (1,0,0)^{T}$ translates into the following initial condition for $u=(\pm \frac{1}{\tau}, 0, 0)$ by making use of equations (\ref{eq:first_variation_optimality}) evaluated at $t=0$ and the constraint $\frac{1}{T}\int_{0}^{T}\| u(t)\|^{2}_{h^{1}} dt =  \frac{1}{\tau^2}$. If we choose the $u$ with a positive first component, then we find that
+\[
+	k_{1}u_{1}=\frac{1}{\tau} \cos(\omega t) \quad
+	k_{2}u_{2}=\frac{1}{\tau} \sin(\omega t).
+\]
+
+\section{State solution to 3-shell truncated model}
+\label{appendix:ss3tm}
+
+We solve (\ref{eq:3_mode_state}) given the optimal control by making a unitary transformation, $\theta^{r}=\mathcal{U}^{r}\theta$ where $\mathcal{U}^{r}=\exp(-\omega t S_{y})$. Using this transformation we find a new `rotated' state equation,
+\[
+	\dot{\theta}^{r}=\mathcal{U}^{r}A\theta+\dot{\mathcal{U}}^{r}\theta=[\mathcal{U}^{r}A(\mathcal{U}^{r})^{-1} +\dot{\mathcal{U}}^{r}(\mathcal{U}^{r})^{-1}]\theta^{r} =
+	\dot{\theta}^{r}=[\mathcal{U}^{r}A(\mathcal{U}^{r})^{-1} -\omega S_{y}]\theta^{r}
+\]
+where
+\[
+	\mathcal{U}^{r}A(\mathcal{U}^{r})^{-1}=\exp(-\omega t S_{y})\left(\frac{1}{\tau}\sin(\omega t)S_{x}+\frac{1}{\tau}\cos(\omega t) S_{z}\right)\exp(\omega t S_{y}).
+\]
+The time derivative of $\mathcal{U}^{r}A(\mathcal{U}^{r})^{-1}$ is calculated as
+\begin{eqnarray*}
+	\frac{d}{dt}\mathcal{U}^{r}A(\mathcal{U}^{r})^{-1}&=&\frac{d}{dt}\left(\exp(-\omega t S_{y})\left(\frac{1}{\tau}\sin(\omega t)S_{x}+\frac{1}{\tau}\cos(\omega t) S_{z}\right)r\exp(\omega t S_{y})\right) \\
+	&=&\exp(-\omega t S_{y})\Bigg(\frac{1}{\tau}\sin(\omega t)[S_{x},\omega S_{y}] \\ &+&\frac{1}{\tau}\cos(\omega t) [S_{z},\omega S_{y}]\Bigg)\exp(\omega t S_{y})\\
+	&+&\exp(-\omega t S_{y})\left(\frac{1}{\tau}\omega\cos(\omega t)S_{x}-\frac{1}{\tau}\omega\sin(\omega t)S_{z}\right)\exp(\omega t S_{y})\\
+	&=&\exp(-\omega t S_{y})\left(\frac{1}{\tau}\omega\sin(\omega t)S_{z}-\frac{1}{\tau}\omega\cos(\omega t) S_{x} \right)\exp(\omega t S_{y})\\
+	&+&\exp(-\omega t S_{y})\left(\frac{1}{\tau}\omega\cos(\omega t)S_{x}-\frac{1}{\tau}\omega\sin(\omega t)S_{z}\right)\exp(\omega t S_{y})\\
+	&=& 0.
+\end{eqnarray*}
+Thus, $\mathcal{U}^{r}A(\mathcal{U}^{r})^{-1}$ is constant. Hence, we can evaluate it at any time. If we choose $t=0$, we find that $\mathcal{U}^{r}A(\mathcal{U}^{r})^{-1}= \frac{1}{\tau} S_{z}$. The rotated state equation becomes
+\[
+	\dot{\theta}^{r}=\left(\frac{1}{\tau} S_{z} -\omega S_{y}\right)\theta^{r}.
+\]
+Since $\left(\frac{1}{\tau} S_{z} -\omega S_{y}\right)$ is time-independent, we can write the solution as
+\[
+	\theta^{r}(t)=\exp\left(-\omega t S_{y}+ \frac{1}{\tau} t S_{z}\right)\theta^{r}(0).
+\]
+We can write this in terms of $\theta$ to get
+\[
+	\theta(t)=\exp(\omega t S_{y})\exp(-\omega t S_{y}+\frac{1}{\tau} t S_{z})\theta(0).
+\]
+The rotation of a vector $x$ about an arbitrary axis $\hat{n}=(n_{x},n_{y}, n_{z})^{T}$ by an angle $\psi$ is performed by acting on the vector $x$ with the operator, $\exp( \psi  \hat{n}\cdot \vec{S})$. If we define
+
+\[
+	Z=\left(
+	\begin{array}{ccc}
+		0      & -n_{z} & n_{y}  \\
+		n_{z}  & 0      & -n_{x} \\
+		-n_{y} & n_{x}  & 0
+	\end{array}
+	\right),
+\]
+the expression $\exp( \psi  \hat{n}\cdot \vec{S})$ is given by \cite{SLA2005}
+\[\exp( \psi  \hat{n}\cdot \vec{S})=I+(\sin\psi)Z+(1-\cos\psi)Z^{2}.\]
+Using this fact, we rewrite our solution as
+\[
+	\theta(\omega  , \tau, t)=
+	\left(
+	\begin{array}{c}
+		\cos(\omega t) \cos(\nu t) + \frac{\omega}{\nu} \sin(\omega t) \sin(\nu t)  \\
+		\frac{\rho}{\nu}  \sin(\nu t)                                               \\
+		-\sin(\omega t) \cos(\nu t) + \frac{\omega}{\nu} \cos(\omega t) \sin(\nu t) \\
+	\end{array}
+	\right)
+\]
+where we assume $\theta(0)=(1, 0, 0)^{T}$  and define $\nu \equiv \sqrt{\omega^{2}+\frac{1}{\tau}^2}.$
+
+
+
+
+\section{Perfect mixing in finite time is impossible with diffusion}
+\label{appendix:pmift_impossible}
+
+Let \begin{equation}
+	\frac{d}{dt} \theta_{n}= k_{n-1}u_{n-1}\theta_{n-1}-k_{n}u_{n}\theta_{n+1} - \kappa \,  k_{n}^{2} \theta_{n}, \quad n=1,2,\dots
+\end{equation}
+and $u$ be constrained by
+\begin{equation}
+\label{eq:constraint}
+\|u(t)\|_{h^{\alpha}}=W^{(\alpha)}
+\end{equation}
+at all times $t$. We define
+\begin{equation}
+\label{eq:xmymdef}
+x_{m}=\left(\sum_{n=1}^{m}\theta_{n}^{2}\right)^{1/2}, \quad y_{m}=\left(\sum_{n=m+1}^{\infty}\theta_{n}^{2}\right)^{1/2}, \quad \text{ and } \beta_{m}=y_{m}/x_{m}.
+\end{equation} 
+Also we define \begin{equation*}
+\beta_{m}^{\pm}=\gamma_{m}  \pm \sqrt{\gamma_{m}^{2}  - 1}
+\end{equation*}
+and $\gamma_{m} = \frac{3\kappa k_{m}^{1+\alpha} }{2W^{(\alpha)}}.$
+\begin{flushleft}
+{\it Lemma 1:} 
+\end{flushleft}
+\begin{equation}
+\label{condtion_a} 
+\text{ (a) If $\beta_{m}(0) \leq \beta_{m}^{+}$ and $\gamma_{m}\geq 1$ , then $\beta_{m}(t)\leq \beta_{m}^{+}$ for all time $t$. }
+\end{equation}	
+\begin{equation}
+\label{condtion_b} 
+\text{ (b) If $\beta_{m}(0) \leq \beta_{m}^{-}$ and $\gamma_{m}\geq 1$ , then $\beta_{m}(t)\leq \beta_{m}^{-}$ for all time $t$.}
+\end{equation}
+\begin{flushleft}
+{\it Proof:}
+\end{flushleft}
+
+We find that
+\begin{subequations}
+\begin{align}
+	\frac{1}{2}\frac{d}{dt}x_{m}^{2}=-k_{m}u_{m}\theta_{m}\theta_{m+1}-\kappa \sum_{n=1}^{m}k_{n}^2\theta_{n}^2 \\
+	\frac{1}{2}\frac{d}{dt}y_{m}^{2}=k_{m}u_{m}\theta_{m}\theta_{m+1}-\kappa \sum_{n=m+1}^{\infty}k_{n}^2\theta_{n}^2.
+\end{align}
+\end{subequations}
+Using the following inequalities,
+\begin{itemize}
+\item $|\theta_{m}|\leq x_{m}$
+\item $ |\theta_{m+1}|\leq y_{m}$
+\item $|u_{m}|\leq \frac{W^{(\alpha)}}{k^{\alpha}_{m}}$
+\item $\sum_{n=1}^{m} k_{n}^{2}\theta_{n}^2\leq  k_{m}^{2}x_{m}^{2}$
+\item $ \sum_{n=m+1}^{\infty } k_{n}^2\theta_{n}^{2}\geq k^{2}_{m+1}y_{m}^{2}$,
+\end{itemize}
+we find that 
+\begin{subequations}
+\begin{align}
+\label{ineq_1}
+\frac{dx_{m}}{dt} \geq  - k_{m}^{1-\alpha}W^{(\alpha)} y_{m} - \kappa k_{m}^2 x_{m} \\
+\label{ineq_2}
+\frac{dy_{m}}{dt} \leq k_{m}^{1-\alpha}W^{(\alpha)}x_{m} - \kappa k_{m+1}^2 y_{m} .
+\end{align}
+\end{subequations}
+Taking the derivative of $y_{m}/x_{m}$,
+\begin{multline}
+\frac{d}{dt}\left(\frac{y_{m}}{x_{m}}\right)=\frac{x_{m}y_{m}'-y_{m}x_{m}'}{x_{m}^2}\leq \frac{1}{x_{m}}(k_{m}^{1-\alpha}W^{(\alpha)}x_{m} - \kappa k_{m+1}^2 y_{m}) \\
+- \frac{y_{m}}{x_{m}^2}( - k_{m}^{1-\alpha}W^{(\alpha)}y_{m} - \kappa k_{m}^2 x_{m} ) \\
+=k_{m}^{1-\alpha}W^{(\alpha)}\left(1+\frac{y_{m}^2}{x_{m}^{2}}\right) - \kappa (k_{m+1}^2-k_m^2)\frac{y_{m}}{x_{m}}
+\end{multline}
+Using the definition $\beta_{m} = y_{m}/x_{m}$, we write this as 
+\begin{equation}
+\label{eq:beta}
+\frac{d\beta_{m}}{dt}\leq k_{m}^{1-\alpha}W^{(\alpha)}\left(1+\beta_{m}^2\right) - \kappa (k_{m+1}^2-k_m^2)\beta_{m}=k_{m}^{1-\alpha}W^{(\alpha)}(\beta_{m} -\beta_{m}^{-})(\beta_{m} -\beta_{m}^{+})
+\end{equation}
+where $\beta_{m}^{\pm}$ are the roots of the right-hand side given by
+\begin{equation*}
+\beta_{m}^{\pm}=\gamma_{m}  \pm \sqrt{\gamma_{m}^{2}  - 1}.
+\end{equation*}
+The roots $\beta_{m}^{\pm}$ are real when $\gamma_{m} =\frac{3\kappa k_{m}^{1+\alpha} }{2W^{(\alpha)}} \geq 1$. The differential inequality (\ref{eq:beta}) implies conditions (\ref{condtion_a}) and (\ref{condtion_b}).
+
+
+\begin{flushleft}
+{\it Theorem 1: }
+\end{flushleft}
+Let there exist a smallest integer $p$ such that $x_{p}(0)>0$ and $y_{p}(0)<\infty$.  It follows that perfect mixing in finite time is impossible ($\|\theta\|_{h^{-1}}>0$ for all finite $t$). Furthermore, for 
+\begin{equation}
+m=\max\left\{\left\lceil\frac{1}{1+\alpha}\log_{2}\left(\frac{2W^{(\alpha)}}{3\kappa k_{0}^{1+\alpha}}\gamma^{*} \right)\right\rceil, p \right\}
+\end{equation}
+with
+$\gamma^{*}\equiv \max\left\{\frac{1+\beta_{p}^2(0)}{2\beta_{p}(0)},1\right\}$ and
+ $\beta_{p}=x_{p}/y_{p}$, we have that
+\begin{equation}
+\|\theta(t)\|_{h^{-1}}\geq \frac{x_{m}(0)}{k_{m}} \exp(-(k_{m}^{1-\alpha}W^{(\alpha)}\beta_{m}^{+}+\kappa k_m^2)t).
+\end{equation}
+
+\begin{flushleft}
+{\it Proof: }
+\end{flushleft}
+Assume that there exists a smallest integer $p$ such that $x_{p}(0)>0$ and $y_{p}(0)<\infty$. Thus, $\beta_{p}(0)<\infty$. If we choose $m\geq p$ large enough so that $\gamma_{m}\geq \gamma^{*}\equiv \max\left\{\frac{1+\beta_{p}^2(0)}{2\beta_{p}(0)},1\right\}$, then this ensures that $\beta_{m}(0)\leq \beta_{p}(0) \leq \beta_{m}^{+}$ and the hypotheses of {\it Lemma 1.a} are satisfied. Therefore, by choosing 
+\begin{equation}
+m=\max\left\{\left\lceil\frac{1}{1+\alpha}\log_{2}\left(\frac{2W^{(\alpha)}}{3\kappa k_{0}^{1+\alpha}}\gamma^{*} \right)\right\rceil, p \right\}
+\end{equation}
+ we have that
+\begin{equation}
+\label{eq:key_ineq}
+y_{m}(t)\leq \beta_{m}^{+} x_{m}(t).
+\end{equation}
+Note that (\ref{ineq_1}) remains true. We use (\ref{ineq_1}) with the above relation to give
+\begin{equation}
+\frac{dx_{m}}{dt} \geq - (k_{m}^{1-\alpha}W^{(\alpha)}\beta_{m}^{+}+\kappa k_m^2)x_{m} . 
+\end{equation}
+By Gr\"onwall's inequality, we have that
+\begin{equation}
+x_{m}(t)\geq x_{m}(0) \exp(-(k_{m}^{1-\alpha}W^{(\alpha)}\beta_{m}^{+}+\kappa k_m^2)t).
+\end{equation}
+Since 
+\begin{equation}
+\|\theta\|_{h^{-1}}^{2} \geq  \sum_{n=1}^{m}\frac{\theta^2_{n}}{k_{n}^2}  \geq \frac{1}{k_{m}^{2}} \sum_{n=1}^{m}\theta^2_{n} = \frac{x_{m}^2}{k_m^2},
+\end{equation}
+we have that 
+\begin{equation}
+\|\theta(t)\|_{h^{-1}}\geq \frac{x_{m}(0)}{k_{m}} \exp(-(k_{m}^{1-\alpha}W^{(\alpha)}\beta_{m}^{+}+\kappa k_m^2)t)>0.
+\end{equation}
+Therefore, perfect mixing in finite time is impossible. The exponential decay rate is exactly equal to the eigenvalue $\lambda_{-}$ (see definition (\ref{eq:eigenvalues_lit})) from the local-in-time analysis with diffusion.
+
+\begin{flushleft}
+{\it Theorem 2:}
+\end{flushleft}
+Let  $p$ be an integer such that $\theta_{q}=0$ for all $q\geq p$. It follows that perfect mixing in finite time is impossible ($\|\theta\|_{h^{-1}}>0$ for all finite $t$). Furthermore, for 
+\begin{equation}
+m=\max\left\{\left\lceil\frac{1}{1+\alpha}\log_{2}\left(\frac{2W^{(\alpha)}}{3\kappa k_{0}^{1+\alpha}}\right)\right\rceil, p \right\}
+\end{equation}
+we have that
+\begin{equation}
+\|\theta(t)\|_{h^{-1}}\geq \frac{x_{m}(0)}{k_{m}} \exp(-(k_{m}^{1-\alpha}W^{(\alpha)}\beta_{m}^{-}+\kappa k_m^2)t).
+\end{equation}
+\begin{flushleft}
+{\it Proof: }
+\end{flushleft}
+Assume there exists an integer $p$ such that $\theta_{q}(0)=0$ for all $q\geq p$.  Then, we have that $\beta_{q}(0)=0$ for all $q\geq p$.  By choosing 
+\begin{equation}
+m=\max\left\{\left\lceil\frac{1}{1+\alpha}\log_{2}\left(\frac{2W^{(\alpha)}}{3\kappa k_{0}^{1+\alpha}}\right)\right\rceil, p \right\}
+\end{equation}
+we have that $\gamma_{m}\geq 1$ and $\beta_{m}(0)=0\leq \beta_{m}^{-}$. Thus, we satisfy the hypotheses of {\it Lemma 1.b} and arrive at
+\begin{equation}
+y_{m}(t)\leq \beta_{m}^{-} x_{m}(t).
+\end{equation}
+The remaining argument is identical to the argument from inequality (\ref{eq:key_ineq}) forward in the previous proof with the substitution of $\beta_{m}^{+}$ for $\beta_{m}^{-}$. We find that
+\begin{equation}
+\|\theta(t)\|_{h^{-1}}\geq \frac{x_{m}(0)}{k_{m}} \exp(-(k_{m}^{1-\alpha}W^{(\alpha)}\beta_{m}^{-}+\kappa k_m^2)t)>0.
+\end{equation}
+Therefore, perfect mixing in finite time is impossible. The exponential decay rate is exactly equal to the eigenvalue $\lambda_{+}$ (see definition (\ref{eq:eigenvalues_lit})) from the local-in-time analysis with diffusion.
+
+\begin{flushleft}
+{\it Remark: } 
+Note that {\it Theorem 1} proves perfect mixing in finite time is impossible for a larger set of initial conditions than that considered by {\it Theorem 2}. {\it Theorem 2}, however, provides a tighter lower bound than that given by {\it Theorem 1}.
+\end{flushleft}
+
+%\section{No perfect mixing finite time for $Pe\leq 1$ }
+%
+%Let $D=[0,L]^{d}$ be our domain where $L$ is the side length and $d$ is the total number of spatial dimensions. All functions defined on $D$ have periodic boundary conditions. Let $\theta(\mathbf{x},t): D \times [0,T] \rightarrow [-1,1]$ be the tracer concentration field that evolves according to the advection-diffusion equation,
+%\begin{equation}
+%	\label{eq:PDE_advection2}
+%	\partial_{t}\theta+\mathbf{u}\cdot \nabla \theta=\kappa \Delta \theta
+%\end{equation}
+%where $\kappa$ is the molecular diffusion coefficient and $\mathbf{u}(\mathbf{x},t)$ is the velocity field constrained by fixed energy
+%\begin{equation}
+%	\label{eq:PDE_energy}
+%	\int d^{d}x  |\mathbf{u}|^{2} = U^{2}L^{d}
+%\end{equation}
+%or enstrophy
+%\begin{equation}
+%	\label{eq:PDE_enstrophy}
+%	\int d^{d}x |\nabla \times \mathbf{u}|^{2} = \frac{L^{d}}{\tau^{2}} .
+%\end{equation}
+%We also require that the velocity field be divergence-free,
+%\begin{equation}
+%	\label{eq:PDE_divfree2}
+%	\nabla\cdot \mathbf{u}=0.
+%\end{equation}
+%We are provided with initial data
+%\begin{equation}
+%	\label{eq:PDE_initial_condition2}
+%	\theta(\mathbf{x},0)=\theta_{0}(\mathbf{x})
+%\end{equation}
+% use the mix-norm throughout to measure homogenization, 
+%\begin{equation}
+%	\label{eq:mixnorm}
+%  \|\theta(\,\cdot\,,t)\|_{H^{-1}}.
+%\end{equation}
+%The advection-diffusion equation in Fourier space is expressed as 
+%\begin{equation}
+%\label{eq:advection_spectral}
+%\partial_{t}\hat{\theta}(\mathbf{k},t)+i\sum_{\mathbf{k}'}\hat{u}(\mathbf{k}-\mathbf{k}',t)\cdot \mathbf{k}' \hat{\theta}(\mathbf{k}',t)+\kappa |\mathbf{k}|^2\theta(\mathbf{k},t)=0
+%\end{equation}
+%or 
+%\begin{equation}
+%\label{eq:advection_spectral_condensed}
+%\partial_{t}\hat{\theta}(\mathbf{k},t)=i\sum_{\mathbf{k}'}A_{\mathbf{k},\mathbf{k}'} \hat{\theta}(\mathbf{k}',t)-\kappa |\mathbf{k}|^2\theta(\mathbf{k},t)
+%\end{equation}
+%where 
+%\begin{equation}
+%A_{\mathbf{k},\mathbf{k}'}=-\hat{u}(\mathbf{k}-\mathbf{k}',t)\cdot \mathbf{k}'.
+%\end{equation}
+%One can show that $A$ is hermitian ($A=A^{\dagger}$).
+%
+%
+% We write $\theta_{\mathbf{k}}(t)=\hat{\theta}(\mathbf{k},t)$ for convenience. We define
+%\begin{equation}
+%x_{\tilde{k}}=\left(\sum_{|\mathbf{k}|\leq\tilde{k}}|\theta_{\mathbf{k}}|^{2}\right)^{1/2} \quad \text{and} \quad  
+%y_{\tilde{k}}=\left(\sum_{|\mathbf{k}|\geq\tilde{k}'}|\theta_{\mathbf{k}}|^{2}\right)^{1/2} 
+%\end{equation}
+%where $\tilde{k}<\tilde{k}'$ and there does not exist a $\mathbf{k}$ satisfying $\tilde{k}<|\mathbf{k}|<\tilde{k}'$.
+%$\|\theta(0)\|_{\infty}<\infty$ implies that $\|\theta(t)\|_{\infty}<\infty$ for all time $t$ by \ref{eq:PDE_advection2}. Thus, $|\theta_{k}|\leq x_{\tilde{k}} $ for $|\mathbf{k}|\leq\tilde{k}$ and $|\theta_{k}|\leq y_{\tilde{k}} $ for $|\mathbf{k}|\geq\tilde{k}'$ since $\|\theta\|_{\infty}\leq \infty$. Then by using (\ref{eq:advection_spectral_condensed}), we have that
+%
+%\begin{equation}
+%\label{eq:xktilde}
+%\frac{1}{2}\frac{d}{dt}x^2_{\tilde{k}}=\sum_{|\mathbf{k}|\leq\tilde{k}}\theta_{\mathbf{k}}^{\dagger}\frac{d}{dt}\theta_{\mathbf{k}}=\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{\mathbf{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'} - \sum_{|\mathbf{k}|\leq\tilde{k}} \kappa |\mathbf{k}|^{2}|\theta_{\mathbf{k}}|^{2}\\
+%\end{equation}
+%The first term, which is real, on the right-hand side is
+%\begin{align}
+%\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{\mathbf{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}}
+%&\geq -\left|\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|< \tilde{k}}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'} + \sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k}'}\theta_{\mathbf{k}'} \right| & \\
+%& =- \left|\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'}\right| &  (A=A^{\dagger})  \\
+%& \geq -\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\theta_{\mathbf{k}}||A_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'}|&  \\
+%&\geq - x_{\tilde{k}} \sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}|A_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'}| & (|\theta_{k}|\leq x_{\tilde{k}} )  \\
+%&=  - x_{\tilde{k}} \sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\mathbf{u}_{\mathbf{k}-\mathbf{k}'}\cdot \mathbf{k}\theta_{\mathbf{k}'}| &  (A=A^{\dagger})  \\
+%&\geq  - x_{\tilde{k}} \tilde{k}\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\mathbf{u}_{\mathbf{k}-\mathbf{k}'}||\theta_{\mathbf{k}'}| &   \\
+%&\geq  - x_{\tilde{k}} \tilde{k} \sum_{|\mathbf{k}|\leq\tilde{k}}\left(\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\mathbf{u}_{\mathbf{k}-\mathbf{k}'}|^{2} \right)^{1/2} y_{\tilde{k}'}& (\text{Cauchy-Schwarz})   \\
+%&=  - x_{\tilde{k}} y_{\tilde{k}'}\tilde{k} \sum_{|\mathbf{k}|\leq\tilde{k}}U&\left(\left(\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\mathbf{u}_{\mathbf{k}-\mathbf{k}'}|^{2} \right)^{1/2}\leq U\right)  \\
+%&\geq  - x_{\tilde{k}}y_{\tilde{k}'} \tilde{k}\beta(\tilde{k}) \|u\|_{2} & 
+%\end{align}
+%where $\beta(\tilde{k})$  is the number of modes within radius $\tilde{k}$.
+%The right-most term in (\ref{eq:xktilde}) is bounded as so
+%\begin{equation}
+%\sum_{|\mathbf{k}|<\tilde{k}} - \kappa |\mathbf{k}|^{2}|\theta_{\mathbf{k}}|^{2} \geq -\kappa \tilde{k}^{2} x_{\tilde{k}}^2 .
+%\end{equation}
+%Thus, 
+%\begin{equation}
+%\frac{d}{dt}x_{\tilde{k}}\geq   - \tilde{k}\beta U y_{\tilde{k}'} -\kappa \tilde{k}^{2} x_{\tilde{k}}.
+%\end{equation}
+%Similarly, let's bound the derivative, 
+%\begin{align}
+%\label{eq:yktilde}
+%\frac{1}{2}\frac{d}{dt}y^2_{\tilde{k}}&=\sum_{|\mathbf{k}'|\geq \tilde{k}'}\theta_{\mathbf{k}}^{\dagger}\frac{d}{dt}\theta_{\mathbf{k}}=\sum_{|\mathbf{k}'|\geq \tilde{k}'}\sum_{\mathbf{k}}\theta_{\mathbf{k}'}^{\dagger}iA_{\mathbf{k}',\mathbf{k}}\theta_{\mathbf{k}} - \sum_{|\mathbf{k}'|\geq \tilde{k}'}\kappa |\mathbf{k}'|^{2}|\theta_{\mathbf{k}'}|^{2}\\
+%&= \sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'} -\sum_{|\mathbf{k}'|\geq \tilde{k}'} \kappa |\mathbf{k}'|^{2}|\theta_{\mathbf{k}'}|^{2} &  (A=A^{\dagger})  \\
+%&\leq x_{\tilde{k}}y_{\tilde{k}'} \tilde{k}\beta \|u\|_{2} - \kappa \tilde{k}'^{2} y_{\tilde{k}'}^2 & 
+%\end{align}
+%Therefore,
+%\begin{subequations}
+%\label{inequalties}
+%\begin{align}
+%\frac{d}{dt}x_{\tilde{k}}\geq   - \tilde{k}\beta U y_{\tilde{k}} -\kappa \tilde{k}^{2} x_{\tilde{k}}. \\
+%\frac{d}{dt}y_{\tilde{k}'}\leq   \tilde{k}\beta U x_{\tilde{k}}  -\kappa \tilde{k}'^{2} y_{\tilde{k}'}.
+%\end{align}
+%\end{subequations}
+%
+%Taking the derivative of $y_{\tilde{k}'}/x_{\tilde{k}}$,
+%\begin{multline}
+%\frac{d}{dt}\left(\frac{y_{\tilde{k}'}}{x_{\tilde{k}}}\right)=\frac{x_{\tilde{k}}y_{\tilde{k}'}'-y_{\tilde{k}'}x_{\tilde{k}}'}{x_{\tilde{k}}^2}\leq \frac{1}{x_{\tilde{k}}}( \tilde{k}\beta U x_{\tilde{k}} - \kappa\tilde{k}'^{2}  y_{\tilde{k}'}) - \frac{y_{\tilde{k}'}}{x_{m}^2}( - \tilde{k}\beta U  y_{\tilde{k}'} - \kappa \tilde{k}^{2}  x_{\tilde{k}} ) \\
+%=\tilde{k}\beta U \left(1+\frac{y_{\tilde{k}'}^2}{x_{\tilde{k}'}^{2}}\right) - \kappa (\tilde{k}'^2-\tilde{k}^{2})\frac{y_{\tilde{k}'}}{x_{\tilde{k}}}
+%\end{multline}
+%Defining $\alpha = y_{\tilde{k}'}/x_{\tilde{k}}$, we write this as 
+%\begin{equation}
+%\label{eq:alpha}
+%\frac{d\alpha}{dt}\leq \tilde{k}\beta U\left(1+\alpha^2\right) - \kappa (\tilde{k}'^2-\tilde{k}^2)\alpha=\tilde{k}\beta U(\alpha -\alpha^{-})(\alpha -\alpha^{+})
+%\end{equation}
+%where $\alpha^{\pm}$ are the roots of the right-hand side given by
+%\begin{equation*}
+%\alpha^{\pm}=\gamma  \pm \sqrt{\gamma^{2}  - 1}
+%\end{equation*}
+%and $\gamma = \frac{\kappa  (\tilde{k}'^2-\tilde{k}^2)}{\tilde{k}\beta U}$. Then it follows that:
+%\begin{equation}
+%\label{condtion}
+%\text{ If $\alpha(0) \leq \alpha^{+}$ and $\gamma\geq 1$ , then $\alpha(t)\leq \alpha^{+}$ for all time $t$. }
+%\end{equation}
+%Let's consider the initial condition, $\theta(x,0)=\sin(x)$. We choose $\tilde{k}=\frac{2\pi}{L}$ and $\tilde{k}'=\sqrt{2}\tilde{k}$. In this case, $\beta=4$ where we used the fact that the concentration field has mean-zero for all time. We get that $\gamma= \frac{\pi\kappa}{2UL}$. Let assume that $\gamma\geq 1$ for an appropriate choice of $U$ and $\kappa$. Then, we find that $\alpha(0)\leq \alpha^{+}$ for our choice of initial condition so the hypotheses of the condition (\ref{condtion}) are satisfied. Therefore,
+%
+%\begin{equation}
+%\frac{y_{\tilde{k}'}}{x_{\tilde{k}'}}\leq \alpha^{+} 
+%\end{equation}
+%for all time $t$. From (\ref{inequalties}), we find that
+%\begin{equation}
+%x_{\tilde{k}}(t)\geq x_{\tilde{k}}(0)\exp(-(4\tilde{k}U\alpha^{+}+\kappa\tilde{k}^2)t).
+%\end{equation}
+%Since
+%\begin{equation}
+%\|\theta\|_{H^{-1}}^2=\sum_{\mathbf{k}}\frac{|\theta_{\mathbf{k}}|^2}{|\mathbf{k}|^2}\geq \sum_{|\mathbf{k}|\leq \tilde{k}}\frac{|\theta_{\mathbf{k}}|^2}{|\mathbf{k}|^2} \geq \frac{1}{\tilde{k}^{2}}\sum_{|\mathbf{k}|\leq \tilde{k}}|\theta_{\mathbf{k}}|^2 = \frac{x_{\tilde{k}}^2(t)}{\tilde{k}^2},
+%\end{equation}
+%we find that
+%\begin{equation}
+%\|\theta\|_{H^{-1}}\geq  \frac{x_{\tilde{k}}(0)}{\tilde{k}}\exp(-(4\tilde{k}U\alpha^{+}+\kappa\tilde{k}^2)t).
+%\end{equation}
+%Therefore, perfect mixing is impossible for the initial condition $\theta(\mathbf{x},t)=\sin(2\pi x/L)$ if $L\leq \frac{\pi \kappa}{2U}= \frac{\pi}{2}\lambda_{B}$  where $\lambda_{B}$ is the generalized Batchelor scale given by $\lambda_{B} = \frac{\kappa}{U}.$  
+%
+%In conclusion, we were able to show that the shell model argument is only able to show that perfect mixing in finite time is impossible when considering the initial condition $\sin(2\pi x/L)$ the box size $L$ is smaller than the Batchelor scale with an $O(1)$ pre-factor.
+
+
+
+
+

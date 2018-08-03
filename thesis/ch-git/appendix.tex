@@ -1,0 +1,131 @@
+
+\section{Total variation calculation}
+\label{sec:variation_calc}
+
+
+\begin{flushleft}
+
+Let $\theta(\mathbf{x},t)$ and $\mathbf{u}(\mathbf{x},t)$ be arbitrary functions on $D \times [0,T]$ and define a cost functional be
+\[
+C\{\theta\}=\| \theta(\mathbf{x},T)\|^{2}_{H^{-1}}=\int_{D}d\mathbf{x} |\nabla^{-1} \theta(\mathbf{x},T)|^{2}.\]
+
+Define the quantities:
+\begin{align*}
+g_{1}\{\theta,\mathbf{u}\} &= \partial_{t}\theta+\mathbf{u}\cdot \nabla \theta - \kappa \Delta \theta \\
+g_{2}\{\mathbf{u}\} &= \nabla\cdot \mathbf{u} \\
+g_{3}\{\mathbf{u}\} &= \int_{0}^{T}\int_{D}d\mathbf{x}dt |\nabla \mathbf{u}|^{2}-TL^{d}\Omega^{2}.
+\end{align*}
+
+Let $\phi(\mathbf{x},t),$ and $ q(\mathbf{x},t)$ be arbitrary functions on $D \times [0,T]$ and let $\mu$ be a scalar. Define the functional $G$ as
+
+\begin{eqnarray*}
+G\{\theta,\mathbf{u},\phi,q,\mu\}=\iint [\phi(\mathbf{x},t) g_{1}\{\theta,\mathbf{u}\} + q(\mathbf{x},t) g_{2}\{\mathbf{u}\}]d\mathbf{x}dt\\
++\mu g_{3}\{\mathbf{u}\}
+\end{eqnarray*}
+
+Let the pair $\{\theta_{0},\mathbf{u}_{0}\}$ be an extrema of $C$ and $\{\theta_{1},\mathbf{u}_{1}\}$ be an admissible pair. Note that since $\{\theta_{0},\mathbf{u}_{0}\}$ and $\{\theta_{1},\mathbf{u}_{1}\}$ are admissible, $G\{\theta_{0},\mathbf{u}_{0},\phi,q,\mu\}=0$ and $G\{\theta_{1},\mathbf{u}_{1},\phi,q,\mu\}=0$. Hence, the total variation of G is also zero,
+\[\Delta G= G\{\theta_{1},\mathbf{u}_{1},\phi,q,\mu\}-G\{\theta_{0},\mathbf{u}_{0},\phi,q,\mu\}=0.\]
+
+
+ Let $\delta\theta=\theta_{1}-\theta_{0}$ and $\delta \mathbf{u}=\mathbf{u}_{1}-\mathbf{u}_{0}$.
+ 
+ \[\Delta G=\iint [\phi(\mathbf{x},t) g_{1}\{\theta_{1},\mathbf{u}_{1}\} + q(\mathbf{x},t) g_{2}\{\mathbf{u}_{1}\}]d\mathbf{x}dt+\mu g_{3}\{\mathbf{u}_{1}\}\]
+  \[-\iint [\phi(\mathbf{x},t) g_{1}\{\theta_{0},\mathbf{u}_{0}\} + q(\mathbf{x},t) g_{2}\{\mathbf{u}_{0}\}]d\mathbf{x}dt-\mu g_{3}\{\mathbf{u}_{0}\}\]
+  
+  \begin{eqnarray*}
+ 	 &=& \iint [
+  		\phi\left(
+  			\partial_{t}(\theta_{0}+\delta\theta)+(\mathbf{u}_{0}+\delta\mathbf{u})\cdot \nabla(\theta_{0}+\delta\theta)
+  			-\partial_{t}\theta_{0}-\mathbf{u}_{0}\cdot \nabla 					\theta_{0}
+	  	\right) \\
+	&+& q\left(
+		\nabla\cdot(\mathbf{u}_{0}+\delta\mathbf{u})-\nabla\cdot\mathbf{u_{0}}	
+	  	\right) \\
+	&+&\mu \left( 
+		 	 |\nabla(\mathbf{u}_{0}+\delta\mathbf{u})|^{2}- |\nabla \mathbf{u}_{0}|^{2}
+	  	\right)
+  ]d\mathbf{x}dt
+\end{eqnarray*}
+
+  \begin{eqnarray*}
+ 	\implies \Delta G &=& \iint \{
+  		(-\partial_{t}\phi-\mathbf{u}_{0}\cdot\nabla\phi)\delta\theta
+		+( \phi \nabla\theta_{0} - \nabla q -\mu \Delta \mathbf{u}_{0})\cdot \delta\mathbf{u} \\
+		 &+&\nabla\phi\cdot\delta\mathbf{u}\delta \theta 
+		 +\mu |\nabla\delta \mathbf{u}|^{2}  
+  		t\}d\mathbf{x}dt \\
+  &+& \int_{D}\phi(x,T)\delta\theta(x,T)d\mathbf{x} = 0
+\end{eqnarray*}
+ 
+  
+ 
+  Consider the total variation of C
+ \[ \Delta C= C\{\theta_{1}\}-C\{\theta_{0}\} \] 
+ \[=\int_{D}\left\{ |\nabla^{-1}\theta_{1}(\mathbf{x},T)|^{2} - |\nabla^{-1} \theta_{0}(\mathbf{x},T)|^{2} \right\} d\mathbf{x} \]
+ 
+\[=\int_{D}\left\{ 
+  			|\nabla^{-1} \left[
+  				\theta_{0}(\mathbf{x},T)+\delta\theta(\mathbf{x},T)											\right]|^{2} 
+  			- |\nabla^{-1} \theta_{0}(\mathbf{x},T)|^{2} 
+  		\right\} 
+d\mathbf{x} \]
+  
+\[
+	=\int_{D}
+	\left\{ 
+   		\nabla^{-1}\theta_{0}(\mathbf{x},T)\cdot
+   		\nabla^{-1} \delta\theta(\mathbf{x},T)
+   		+|\nabla^{-1} 
+		\delta\theta(\mathbf{x},T)|^{2} 
+   \right\} 
+   d\mathbf{x}  
+\]
+ 
+\[
+	=\int_{D}
+	\left\{ 
+   		-\Delta^{-1}\theta_{0}(\mathbf{x},T)\delta\theta(\mathbf{x},T)
+   		+|\nabla^{-1} 
+		\delta\theta(\mathbf{x},T)|^{2} 
+   \right\} 
+   d\mathbf{x}  
+\]
+ 
+Since $\Delta G=0$, we can add  $\Delta G$ to $\Delta C$ without any consequence. Let the index ``$_{T}$'' be shorthand for the arguments $(\mathbf{x},T)$. (e.g. $\phi_{T}=\phi(\mathbf{x},T)$)
+
+
+  \begin{eqnarray*}
+ 	\Delta C&=& \Delta C+\Delta G \\
+ 	         &=& \iint \{
+  			(-\partial_{t}\phi-\mathbf{u}_{0}\cdot\nabla\phi -\kappa \Delta \phi)\delta\theta \\
+			&+&( \phi \nabla\theta_{0} - \nabla q -\mu \Delta \mathbf{u}_{0})\cdot \delta\mathbf{u}
+			 +\nabla\phi\cdot\delta\mathbf{u}\delta \theta 
+			 +\mu |\nabla\delta \mathbf{u}|^{2}  
+  		\}d\mathbf{x}dt \\
+		  &+& \int_{D}\left\{
+  			(\phi_{T}-\Delta^{-1}\theta_{0,T})\delta\theta_{T}
+   			+|\nabla^{-1} 
+			\delta\theta_{T}|^{2}
+	       \right\} d\mathbf{x}		
+\end{eqnarray*}
+ 
+Since $\{\theta_{0},\mathbf{u}_{0}\}$ is an extrema, the first variation vanishes. The total variation about the extrema $\{\theta_{0},\mathbf{u}_{0}\}$  becomes
+  \begin{eqnarray}
+  	\label{eq:total_Variation}
+ 	\Delta C&=& \iint \left\{\nabla\phi\cdot\delta\mathbf{u}\delta \theta 
+			 +\mu |\nabla\delta \mathbf{u}|^{2}  
+  		\right\}d\mathbf{x}dt +\int_{D}
+  			|\nabla^{-1} 
+			\delta\theta_{T}|^{2}
+	      d\mathbf{x}.	
+\end{eqnarray}
+%
+
+\end{flushleft}
+
+
+\section{Global-in-time optimization code: git.py}
+\label{app:git_code}
+\lstinputlisting[language=Python]{/Users/cmiless/Dropbox/projects/lit/git.py}
+
+

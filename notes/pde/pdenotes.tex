@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{standalone} 
+\usepackage{amsmath}
+\usepackage[margin=1in, paperwidth=8.5 in, paperheight=11in]{geometry}
+\usepackage{dsfont}
+%\usepackage{tikz}   
+%\usetikzlibrary{decorations.pathmorphing}
+%\usetikzlibrary{patterns,snakes}
+\usepackage{wrapfig}
+\usepackage{cite}
+
+% Macros
+\def \iint {\int_{0}^{T}\int_{D}}
+\def \arg {(\mathbf{x},t)}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+
+
+\begin{document}
+
+\section{PDE: global-in-time}
+
+\subsection{Problem statement and definitions}
+Let $D=[0,L]^{d}$ be our domain where $L$ is the side length and $d$ is the total number of spatial dimensions. All functions defined on $D$ have periodic boundary conditions. Let $\theta (\vec{x},t)$ be a passive scalar field defined on $D$. We are interested in minimizing the following cost functional ($H^{-1}$ mix-norm) at $t=T$,
+
+\begin{equation}
+\label{eq:cost}
+C\{\theta\}=\frac{1}{2}\int_{D}d^{d}x |\nabla\Delta^{-1} \theta(x,T)|^{2}+\frac{\mu}{2}\int_{0}^{T}\int_{D}d^{d}xdt |\nabla \mathbf{u}|^{2},
+\end{equation}
+over the time varying velocity field $\mathbf{u}(\mathbf{x},t)$. with the constraints, 
+\begin{equation}
+	\label{eq:advection2}
+	\partial_{t}\theta+\mathbf{u}\cdot \nabla \theta=0
+\end{equation}
+\begin{equation}
+	\label{eq:divfree2}
+	\nabla\cdot \mathbf{u}=0
+\end{equation}
+
+	 and the initial data 
+\begin{equation}
+	 \theta(\mathbf{x},0)=\theta_{0}(\mathbf{x}).
+\end{equation}
+\vspace{1cm}
+
+\noindent \textbf{Definition} The pair of functions $\{\theta^{*}(x,t), \mathbf{u}^{*}(x,t)\}$ on $D$ is said to be \textbf{admissible} if it satisfies the following constraints \[\partial_{t}\theta+\vec{u}\cdot \nabla \theta=0\]
+\[\nabla\cdot \mathbf{u}=0\]
+\[\int_{0}^{T}\int_{D}d^{d}xdt |\nabla \mathbf{u}|^{2}=TL^{d}\Omega^{2}\] and the initial data $\theta(\mathbf{x},0)=\theta_{0}(\mathbf{x})$.
+
+\vspace{1cm}
+
+\noindent \textbf{Definition} An admissible pair $\{\theta^{*}(\mathbf{x},t), \mathbf{u}^{*}(\mathbf{x},t)\}$ on $D$ is said to be \textbf{optimal} for the cost functional $C$ if the \textbf{total variation}
+\[\Delta C=C\{\theta\}-C\{\theta^{*}\} \] is greater or equal to zero ($\Delta C\geq0$) for all admissible pairs $\{\theta,\mathbf{u}\}$.
+
+\vspace{1cm}
+
+\noindent
+
+\noindent \textbf{Definition} A pair $\{\theta(\mathbf{x},t), \mathbf{u}(\mathbf{x},t)\}$ on $D$ is said to be an \textbf{extrema} for the cost functional $C$ if the pair is admissible and the \textbf{first variation}
+\[\delta C=\lim_{\epsilon\rightarrow0}\frac{C\{\theta+\epsilon\tilde{\theta}\}-C\{\theta\}}{\epsilon} \] vanishes.
+
+\vspace{1cm}
+
+\subsection{Total Variation}
+
+\begin{flushleft}
+
+Let $\theta(\mathbf{x},t)$ and $\mathbf{u}(\mathbf{x},t)$ are arbitrary functions on $D \times [0,T]$. Let the cost function be
+\[
+C\{\theta\}=\| \theta(\mathbf{x},T)\|^{2}_{H^{-1}}=\int_{D}d\mathbf{x} |\nabla^{-1} \theta(\mathbf{x},T)|^{2}=\int_{D}d^{d}x |\nabla\Delta^{-1} \theta(\mathbf{x},T)|^{2}.
+\]
+
+Define the following constraint equations as
+\begin{align*}
+g_{1}\{\theta,\mathbf{u}\} &= \partial_{t}\theta+\mathbf{u}\cdot \nabla \theta \\
+g_{2}\{\mathbf{u}\} &= \nabla\cdot \mathbf{u} \\
+g_{3}\{\mathbf{u}\} &= \int_{0}^{T}\int_{D}d\mathbf{x}dt |\nabla \mathbf{u}|^{2}-TL^{d}\Omega^{2}.
+\end{align*}
+
+Let $\phi(\mathbf{x},t),$ and $ q(\mathbf{x},t)$ be arbitrary functions on $D \times [0,T]$. Let $\mu$ be a scalar. Define $G$ to be 
+
+\[G\{\theta,\mathbf{u},\phi,q,\mu\}=\iint [\phi(\mathbf{x},t) g_{1}\{\theta,\mathbf{u}\} + q(\mathbf{x},t) g_{2}\{\mathbf{u}\}]d\mathbf{x}dt+\mu g_{3}\{\mathbf{u}\}\]
+
+Let the pair $\{\theta_{0},\mathbf{u}_{0}\}$ be an extrema of $C$ and $\{\theta_{1},\mathbf{u}_{1}\}$ be an admissible pair. Note that since $\{\theta_{0},\mathbf{u}_{0}\}$ and $\{\theta_{1},\mathbf{u}_{1}\}$ are admissible, $G\{\theta_{0},\mathbf{u}_{0},\phi,q,\mu\}=0$ and $G\{\theta_{1},\mathbf{u}_{1},\phi,q,\mu\}=0$. Hence, the total variation of G is also zero,
+\[\Delta G= G\{\theta_{1},\mathbf{u}_{1},\phi,q,\mu\}-G\{\theta_{0},\mathbf{u}_{0},\phi,q,\mu\}=0.\]
+
+
+ Let $\delta\theta=\theta_{1}-\theta_{0}$ and $\delta \mathbf{u}=\mathbf{u}_{1}-\mathbf{u}_{0}$.
+ 
+ \[\Delta G=\iint [\phi(\mathbf{x},t) g_{1}\{\theta_{1},\mathbf{u}_{1}\} + q(\mathbf{x},t) g_{2}\{\mathbf{u}_{1}\}]d\mathbf{x}dt+\mu g_{3}\{\mathbf{u}_{1}\}\]
+  \[-\iint [\phi(\mathbf{x},t) g_{1}\{\theta_{0},\mathbf{u}_{0}\} + q(\mathbf{x},t) g_{2}\{\mathbf{u}_{0}\}]d\mathbf{x}dt-\mu g_{3}\{\mathbf{u}_{0}\}\]
+  
+  \begin{eqnarray*}
+ 	 &=& \iint [
+  		\phi\left(
+  			\partial_{t}(\theta_{0}+\delta\theta)+(\mathbf{u}_{0}+\delta\mathbf{u})\cdot \nabla(\theta_{0}+\delta\theta)
+  			-\partial_{t}\theta_{0}-\mathbf{u}_{0}\cdot \nabla 					\theta_{0}
+	  	\right) \\
+	&+& q\left(
+		\nabla\cdot(\mathbf{u}_{0}+\delta\mathbf{u})-\nabla\cdot\mathbf{u_{0}}	
+	  	\right) \\
+	&+&\mu \left( 
+		 	 |\nabla(\mathbf{u}_{0}+\delta\mathbf{u})|^{2}- |\nabla \mathbf{u}_{0}|^{2}
+	  	\right)
+  ]d\mathbf{x}dt
+\end{eqnarray*}
+
+  \begin{eqnarray*}
+ 	\implies \Delta G &=& \iint \left\{
+  		(-\partial_{t}\phi-\mathbf{u}_{0}\cdot\nabla\phi)\delta\theta
+		+( \phi \nabla\theta_{0} - \nabla q -\mu \Delta \mathbf{u}_{0})\cdot \delta\mathbf{u}
+		 +\nabla\phi\cdot\delta\mathbf{u}\delta \theta 
+		 +\mu |\nabla\delta \mathbf{u}|^{2}  
+  		\right\}d\mathbf{x}dt \\
+  &+& \int_{D}\phi(x,T)\delta\theta(x,T)d\mathbf{x} = 0
+\end{eqnarray*}
+ 
+  
+ 
+  Consider the total variation of C
+ \[ \Delta C= C\{\theta_{1}\}-C\{\theta_{0}\} \] 
+ \[=\int_{D}\left\{ |\nabla^{-1}\theta_{1}(\mathbf{x},T)|^{2} - |\nabla^{-1} \theta_{0}(\mathbf{x},T)|^{2} \right\} d\mathbf{x} \]
+ 
+\[=\int_{D}\left\{ 
+  			|\nabla^{-1} \left[
+  				\theta_{0}(\mathbf{x},T)+\delta\theta(\mathbf{x},T)											\right]|^{2} 
+  			- |\nabla^{-1} \theta_{0}(\mathbf{x},T)|^{2} 
+  		\right\} 
+d\mathbf{x} \]
+  
+\[
+	=\int_{D}
+	\left\{ 
+   		\nabla^{-1}\theta_{0}(\mathbf{x},T)\cdot
+   		\nabla^{-1} \delta\theta(\mathbf{x},T)
+   		+|\nabla^{-1} 
+		\delta\theta(\mathbf{x},T)|^{2} 
+   \right\} 
+   d\mathbf{x}  
+\]
+ 
+\[
+	=\int_{D}
+	\left\{ 
+   		-\Delta^{-1}\theta_{0}(\mathbf{x},T)\delta\theta(\mathbf{x},T)
+   		+|\nabla^{-1} 
+		\delta\theta(\mathbf{x},T)|^{2} 
+   \right\} 
+   d\mathbf{x}  
+\]
+ 
+Since $\Delta G=0$, we can add  $\Delta G$ to $\Delta C$ without any consequence. Let the index "$_{T}$" be shorthand for the arguments $(\mathbf{x},T)$. (e.g. $\phi_{T}=\phi(\mathbf{x},T)$)
+
+
+  \begin{eqnarray*}
+ 	\Delta C&=& \Delta C+\Delta G \\
+ 	         &=& \iint \left\{
+  			(-\partial_{t}\phi-\mathbf{u}_{0}\cdot\nabla\phi)\delta\theta
+			+( \phi \nabla\theta_{0} - \nabla q -\mu \Delta \mathbf{u}_{0})\cdot \delta\mathbf{u}
+			 +\nabla\phi\cdot\delta\mathbf{u}\delta \theta 
+			 +\mu |\nabla\delta \mathbf{u}|^{2}  
+  		\right\}d\mathbf{x}dt \\
+		  &+& \int_{D}\left\{
+  			(\phi_{T}-\Delta^{-1}\theta_{0,T})\delta\theta_{T}
+   			+|\nabla^{-1} 
+			\delta\theta_{T}|^{2}
+	       \right\} d\mathbf{x}		
+\end{eqnarray*}
+ 
+
+It remains to be shown that $u_{0}$ and $\theta_{0}$ must cause the first variation to vanish as a necessary condition for global optimization. To prove this fact, we must prove that
+
+\begin{itemize}
+\item C is continuous and differentiable (neither yet defined) on all admissible functions. 
+\end{itemize}
+
+Once we have shown that the first variation must necessarily vanish, then we must show that the second variation (all quadratic terms of perturbations) must be greater than zero for a candidate global minimum. For the moment suppose that the first variation vanishes, then we have
+
+  \begin{eqnarray*}
+ 	\Delta C&=& \iint \left\{\nabla\phi\cdot\delta\mathbf{u}\delta \theta 
+			 +\mu |\nabla\delta \mathbf{u}|^{2}  
+  		\right\}d\mathbf{x}dt +\int_{D}
+  			|\nabla^{-1} 
+			\delta\theta_{T}|^{2}
+	      d\mathbf{x}.	
+\end{eqnarray*}
+
+The problematic term is
+
+\[
+\iint \nabla\phi\cdot\delta\mathbf{u}\delta \theta \, d\mathbf{x}dt.
+\]
+
+It suffices to show that this is non-negative for all perturbations. However, it is not necessarily the only way to show that $\Delta C>0$ for all perturbations. 
+
+Here are some possibly useful facts
+
+\begin{enumerate}
+\item \[
+\iint \nabla\phi\cdot\delta\mathbf{u}\delta \theta \, d\mathbf{x}dt= 
+\iint -\nabla\delta \theta \cdot\delta\mathbf{u} \phi \, d\mathbf{x}dt.
+\]
+\item 
+\[
+\int_{D} \nabla \phi \cdot \delta \mathbf{u} \, d\mathbf{x}=0 \: , \:
+\int_{D} \nabla \delta \theta \cdot \delta \mathbf{u} \, d\mathbf{x}=0  
+\]
+\item 
+\[
+\int_{D} \phi \, d\mathbf{x}=0 \: , \:
+\int_{D} \delta \theta _{T} \, d\mathbf{x}=0  
+\]
+\item \[\| \delta\mathbf{u}+\nabla\phi \|_{2}^{2}=\|\delta\mathbf{u}\|_{2}^{2}+\|\nabla\phi\|_{2}^{2} \: , \: 
+\| \delta\mathbf{u}+\nabla\delta\theta \|_{2}^{2}=\|\delta\mathbf{u}\|_{2}^{2}+\|\nabla\delta\theta\|_{2}^{2}
+\]
+\item Poincare's inequality may be useful to relate $\nabla \delta  \mathbf{u}$ to $\delta \mathbf{u}$.
+\end{enumerate}
+
+
+
+\end{flushleft}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+

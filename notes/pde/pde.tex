@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{standalone}
+\usepackage{amsmath}
+\usepackage[margin=1.0in, paperwidth=8.5in]{geometry}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{cite}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{authblk}
+\usepackage{setspace}
+
+\begin{document}
+%
+%\title{The effects of diffusion on optimal fluid mixing }
+%
+%\author[1,2,3]{Christopher J. Miles}
+%\author[1,2,3]{Charles R. Doering}
+%
+%\affil[1]{{\small Department of Physics, University of Michigan, Ann Arbor, MI 48109-1040}}
+%\affil[2]{{\small Department of Mathematics, University of Michigan, Ann Arbor, MI 48109-1043}}
+%\affil[3]{{\small Center for the Study of Complex Systems, University of Michigan, Ann Arbor, MI 48109-1107}}
+%
+%%\address{$^2$  Department of Mathematics, University of Michigan, Ann Arbor, 530  Church Street, Ann Arbor, MI, USA 48109}
+%%\address{$^3$  Center for the Study of Complex Systems, University of Michigan, Ann Arbor, 1085 S. University Ave, Ann Arbor, MI, USA 48109}
+%%\ead{cmiless@umich.edu}
+%%\vspace{10pt}
+%%\begin{indented}
+%%\item[]\today
+%%\end{indented}
+%
+%\maketitle
+%
+%\begin{abstract}
+%How does diffusion affect optimal mixing?
+%\end{abstract}
+%
+%% Uncomment for PACS numbers
+%%\pacs{00.00, 20.00, 42.10}
+%%
+%%\ams{49J15}
+%%
+%% Uncomment for keywords
+%%\vspace{2pc}
+%\noindent{\it Keywords}: mixing, advection-diffusion equation, optimization, passive scalar advection, dynamical systems, fluid dynamics
+%
+%
+%\section{Introduction}
+%
+%Following up on questions posed in the shell model. Does diffusion always dominate advection over time? Can you go beyond the Batchelor scale\cite{Batchelor1959a}?
+
+Let $D=[0,L]^{d}$ be our domain where $L$ is the side length and $d$ is the total number of spatial dimensions. All functions defined on $D$ have periodic boundary conditions. Let $\theta(\mathbf{x},t): D \times [0,T] \rightarrow [-1,1]$ be the tracer concentration field that evolves according to the advection-diffusion equation,
+\begin{equation}
+	\label{eq:PDE_advection2}
+	\partial_{t}\theta+\mathbf{u}\cdot \nabla \theta=\kappa \Delta \theta
+\end{equation}
+where $\kappa$ is the molecular diffusion coefficient and $\mathbf{u}(\mathbf{x},t)$ is the velocity field constrained by fixed energy
+\begin{equation}
+	\label{eq:PDE_energy}
+	\int d^{d}x  |\mathbf{u}|^{2} = U^{2}L^{d}
+\end{equation}
+or enstrophy
+\begin{equation}
+	\label{eq:PDE_enstrophy}
+	\int d^{d}x |\nabla \times \mathbf{u}|^{2} = \frac{L^{d}}{\tau^{2}} .
+\end{equation}
+We also require that the velocity field be divergence-free,
+\begin{equation}
+	\label{eq:PDE_divfree2}
+	\nabla\cdot \mathbf{u}=0.
+\end{equation}
+We are provided with initial data
+\begin{equation}
+	\label{eq:PDE_initial_condition2}
+	\theta(\mathbf{x},0)=\theta_{0}(\mathbf{x})
+\end{equation}
+ use the mix-norm throughout to measure homogenization, 
+\begin{equation}
+	\label{eq:mixnorm}
+  \|\theta(\,\cdot\,,t)\|_{H^{-1}}.
+\end{equation}
+The advection-diffusion equation in Fourier space is expressed as 
+\begin{equation}
+\label{eq:advection_spectral}
+\partial_{t}\hat{\theta}(\mathbf{k},t)+i\sum_{\mathbf{k}'}\hat{u}(\mathbf{k}-\mathbf{k}',t)\cdot \mathbf{k}' \hat{\theta}(\mathbf{k}',t)+\kappa |\mathbf{k}|^2\theta(\mathbf{k},t)=0
+\end{equation}
+or 
+\begin{equation}
+\label{eq:advection_spectral_condensed}
+\partial_{t}\hat{\theta}(\mathbf{k},t)=i\sum_{\mathbf{k}'}A_{\mathbf{k},\mathbf{k}'} \hat{\theta}(\mathbf{k}',t)-\kappa |\mathbf{k}|^2\theta(\mathbf{k},t)
+\end{equation}
+where 
+\begin{equation}
+A_{\mathbf{k},\mathbf{k}'}=-\hat{u}(\mathbf{k}-\mathbf{k}',t)\cdot \mathbf{k}'.
+\end{equation}
+One can show that $A$ is hermitian ($A=A^{\dagger}$).
+
+
+ We write $\theta_{\mathbf{k}}(t)=\hat{\theta}(\mathbf{k},t)$ for convenience. We define
+\begin{equation}
+x_{\tilde{k}}=\left(\sum_{|\mathbf{k}|\leq\tilde{k}}|\theta_{\mathbf{k}}|^{2}\right)^{1/2} \quad \text{and} \quad  
+y_{\tilde{k}}=\left(\sum_{|\mathbf{k}|\geq\tilde{k}'}|\theta_{\mathbf{k}}|^{2}\right)^{1/2} 
+\end{equation}
+where $\tilde{k}<\tilde{k}'$ and there does not exist a $\mathbf{k}$ satisfying $\tilde{k}<|\mathbf{k}|<\tilde{k}'$.
+$\|\theta(0)\|_{\infty}<\infty$ implies that $\|\theta(t)\|_{\infty}<\infty$ for all time $t$ by \ref{eq:PDE_advection2}. Thus, $|\theta_{k}|\leq x_{\tilde{k}} $ for $|\mathbf{k}|\leq\tilde{k}$ and $|\theta_{k}|\leq y_{\tilde{k}} $ for $|\mathbf{k}|\geq\tilde{k}'$ since $\|\theta\|_{\infty}\leq \infty$. Then by using (\ref{eq:advection_spectral_condensed}), we have that
+
+\begin{equation}
+\label{eq:xktilde}
+\frac{1}{2}\frac{d}{dt}x^2_{\tilde{k}}=\sum_{|\mathbf{k}|\leq\tilde{k}}\theta_{\mathbf{k}}^{\dagger}\frac{d}{dt}\theta_{\mathbf{k}}=\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{\mathbf{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'} - \sum_{|\mathbf{k}|\leq\tilde{k}} \kappa |\mathbf{k}|^{2}|\theta_{\mathbf{k}}|^{2}\\
+\end{equation}
+The first term, which is real, on the right-hand side is
+\begin{align}
+\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{\mathbf{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}}
+&\geq -\left|\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|< \tilde{k}}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'} + \sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k}'}\theta_{\mathbf{k}'} \right| & \\
+& =- \left|\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'}\right| &  (A=A^{\dagger})  \\
+& \geq -\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\theta_{\mathbf{k}}||A_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'}|&  \\
+&\geq - x_{\tilde{k}} \sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}|A_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'}| & (|\theta_{k}|\leq x_{\tilde{k}} )  \\
+&=  - x_{\tilde{k}} \sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\mathbf{u}_{\mathbf{k}-\mathbf{k}'}\cdot \mathbf{k}\theta_{\mathbf{k}'}| &  (A=A^{\dagger})  \\
+&\geq  - x_{\tilde{k}} \tilde{k}\sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\mathbf{u}_{\mathbf{k}-\mathbf{k}'}||\theta_{\mathbf{k}'}| &   \\
+&\geq  - x_{\tilde{k}} \tilde{k} \sum_{|\mathbf{k}|\leq\tilde{k}}\left(\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\mathbf{u}_{\mathbf{k}-\mathbf{k}'}|^{2} \right)^{1/2} y_{\tilde{k}'}& (\text{Cauchy-Schwarz})   \\
+&=  - x_{\tilde{k}} y_{\tilde{k}'}\tilde{k} \sum_{|\mathbf{k}|\leq\tilde{k}}U&\left(\left(\sum_{|\mathbf{k}'|\geq \tilde{k}'}|\mathbf{u}_{\mathbf{k}-\mathbf{k}'}|^{2} \right)^{1/2}\leq U\right)  \\
+&\geq  - x_{\tilde{k}}y_{\tilde{k}'} \tilde{k}\beta(\tilde{k}) \|u\|_{2} & 
+\end{align}
+where $\beta(\tilde{k})$  is the number of modes within radius $\tilde{k}$.
+The right-most term in (\ref{eq:xktilde}) is bounded as so
+\begin{equation}
+\sum_{|\mathbf{k}|<\tilde{k}} - \kappa |\mathbf{k}|^{2}|\theta_{\mathbf{k}}|^{2} \geq -\kappa \tilde{k}^{2} x_{\tilde{k}}^2 .
+\end{equation}
+Thus, 
+\begin{equation}
+\frac{d}{dt}x_{\tilde{k}}\geq   - \tilde{k}\beta U y_{\tilde{k}'} -\kappa \tilde{k}^{2} x_{\tilde{k}}.
+\end{equation}
+Similarly, let's bound the derivative, 
+\begin{align}
+\label{eq:yktilde}
+\frac{1}{2}\frac{d}{dt}y^2_{\tilde{k}}&=\sum_{|\mathbf{k}'|\geq \tilde{k}'}\theta_{\mathbf{k}}^{\dagger}\frac{d}{dt}\theta_{\mathbf{k}}=\sum_{|\mathbf{k}'|\geq \tilde{k}'}\sum_{\mathbf{k}}\theta_{\mathbf{k}'}^{\dagger}iA_{\mathbf{k}',\mathbf{k}}\theta_{\mathbf{k}} - \sum_{|\mathbf{k}'|\geq \tilde{k}'}\kappa |\mathbf{k}'|^{2}|\theta_{\mathbf{k}'}|^{2}\\
+&= \sum_{|\mathbf{k}|\leq\tilde{k}}\sum_{|\mathbf{k}'|\geq \tilde{k}'}\theta_{\mathbf{k}}^{\dagger}iA_{\mathbf{k},\mathbf{k'}}\theta_{\mathbf{k}'} -\sum_{|\mathbf{k}'|\geq \tilde{k}'} \kappa |\mathbf{k}'|^{2}|\theta_{\mathbf{k}'}|^{2} &  (A=A^{\dagger})  \\
+&\leq x_{\tilde{k}}y_{\tilde{k}'} \tilde{k}\beta \|u\|_{2} - \kappa \tilde{k}'^{2} y_{\tilde{k}'}^2 & 
+\end{align}
+Therefore,
+\begin{subequations}
+\label{inequalties}
+\begin{align}
+\frac{d}{dt}x_{\tilde{k}}\geq   - \tilde{k}\beta U y_{\tilde{k}} -\kappa \tilde{k}^{2} x_{\tilde{k}}. \\
+\frac{d}{dt}y_{\tilde{k}'}\leq   \tilde{k}\beta U x_{\tilde{k}}  -\kappa \tilde{k}'^{2} y_{\tilde{k}'}.
+\end{align}
+\end{subequations}
+
+Taking the derivative of $y_{\tilde{k}'}/x_{\tilde{k}}$,
+\begin{multline}
+\frac{d}{dt}\left(\frac{y_{\tilde{k}'}}{x_{\tilde{k}}}\right)=\frac{x_{\tilde{k}}y_{\tilde{k}'}'-y_{\tilde{k}'}x_{\tilde{k}}'}{x_{\tilde{k}}^2}\leq \frac{1}{x_{\tilde{k}}}( \tilde{k}\beta U x_{\tilde{k}} - \kappa\tilde{k}'^{2}  y_{\tilde{k}'}) - \frac{y_{\tilde{k}'}}{x_{m}^2}( - \tilde{k}\beta U  y_{\tilde{k}'} - \kappa \tilde{k}^{2}  x_{\tilde{k}} ) \\
+=\tilde{k}\beta U \left(1+\frac{y_{\tilde{k}'}^2}{x_{\tilde{k}'}^{2}}\right) - \kappa (\tilde{k}'^2-\tilde{k}^{2})\frac{y_{\tilde{k}'}}{x_{\tilde{k}}}
+\end{multline}
+Defining $\alpha = y_{\tilde{k}'}/x_{\tilde{k}}$, we write this as 
+\begin{equation}
+\label{eq:alpha}
+\frac{d\alpha}{dt}\leq \tilde{k}\beta U\left(1+\alpha^2\right) - \kappa (\tilde{k}'^2-\tilde{k}^2)\alpha=\tilde{k}\beta U(\alpha -\alpha^{-})(\alpha -\alpha^{+})
+\end{equation}
+where $\alpha^{\pm}$ are the roots of the right-hand side given by
+\begin{equation*}
+\alpha^{\pm}=\gamma  \pm \sqrt{\gamma^{2}  - 1}
+\end{equation*}
+and $\gamma = \frac{\kappa  (\tilde{k}'^2-\tilde{k}^2)}{\tilde{k}\beta U}$. Then it follows that:
+\begin{equation}
+\label{condtion}
+\text{ If $\alpha(0) \leq \alpha^{+}$ and $\gamma\geq 1$ , then $\alpha(t)\leq \alpha^{+}$ for all time $t$. }
+\end{equation}
+Let's consider the initial condition, $\theta(x,0)=\sin(x)$. We choose $\tilde{k}=\frac{2\pi}{L}$ and $\tilde{k}'=\sqrt{2}\tilde{k}$. In this case, $\beta=4$ where we used the fact that the concentration field has mean-zero for all time. We get that $\gamma= \frac{\pi\kappa}{2UL}$. Let assume that $\gamma\geq 1$ for an appropriate choice of $U$ and $\kappa$. Then, we find that $\alpha(0)\leq \alpha^{+}$ for our choice of initial condition so the hypotheses of the condition (\ref{condtion}) are satisfied. Therefore,
+
+\begin{equation}
+\frac{y_{\tilde{k}'}}{x_{\tilde{k}'}}\leq \alpha^{+} 
+\end{equation}
+for all time $t$. From (\ref{inequalties}), we find that
+\begin{equation}
+x_{\tilde{k}}(t)\geq x_{\tilde{k}}(0)\exp(-(4\tilde{k}U\alpha^{+}+\kappa\tilde{k}^2)t).
+\end{equation}
+Since
+\begin{equation}
+\|\theta\|_{H^{-1}}^2=\sum_{\mathbf{k}}\frac{|\theta_{\mathbf{k}}|^2}{|\mathbf{k}|^2}\geq \sum_{|\mathbf{k}|\leq \tilde{k}}\frac{|\theta_{\mathbf{k}}|^2}{|\mathbf{k}|^2} \geq \frac{1}{\tilde{k}^{2}}\sum_{|\mathbf{k}|\leq \tilde{k}}|\theta_{\mathbf{k}}|^2 = \frac{x_{\tilde{k}}^2(t)}{\tilde{k}^2},
+\end{equation}
+we find that
+\begin{equation}
+\|\theta\|_{H^{-1}}\geq  \frac{x_{\tilde{k}}(0)}{\tilde{k}}\exp(-(4\tilde{k}U\alpha^{+}+\kappa\tilde{k}^2)t).
+\end{equation}
+Therefore, perfect mixing is impossible for the initial condition $\theta(\mathbf{x},t)=\sin(x)$ if $U\leq \frac{\pi \kappa}{2L}$.
+
+
+
+
+
+\end{document}

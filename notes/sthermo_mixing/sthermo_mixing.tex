@@ -1,0 +1,143 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{standalone}
+\usepackage{amsmath}
+\usepackage[margin=1.0in, paperwidth=8.5in]{geometry}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{cite}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{IEEEtrantools}
+\usepackage{authblk}
+\usepackage{setspace}
+\usepackage{ tipa }
+
+\begin{document}
+
+\title{ Stochastic thermodynamics of unmixing }
+\author{Christopher Miles}
+\date{\today}
+
+\maketitle
+
+\section{Abstract}
+
+We provide an alternative formulation of optimal fluid mixing in the framework of stochastic thermodynamics \cite{Seifert2012a}.
+
+\section{The mixing problem}
+\label{sec:mixing}
+We wish to study the following problem:  What incompressible velocity field best mixes a scalar field? 
+More precisely, we would like to chose a velocity field $\mathbf{u}$ that mixes a concentration field $\rho$ over a doubly periodic square domain $\Omega$. The choice of $\mathbf{u}$ will evolve $\rho$ according to the advection-diffusion equation 
+\begin{equation}
+\label{eq:ade}
+\partial_{t}\rho+\mathbf{u}\cdot\nabla \rho = \Delta \rho
+\end{equation}
+where $\kappa$ is the diffusion coefficient provided with initial data $\rho(\mathbf{x},t)=\rho_{0}(x)$. In addition, we have a stirring budget constraint given by a fixed enstrophy cost 
+\begin{equation}
+\int_{\Omega}|\nabla \mathbf{u}|^{2} \text{d}^{d}\mathbf{x} = \gamma^2 |\Omega|
+\end{equation}
+or energy cost
+\begin{equation}
+\int_{\Omega}| \mathbf{u}|^{2} \text{d}^{d}\mathbf{x} = U^2|\Omega| 
+\end{equation}
+for all times $t$.
+
+
+There exist many different measures of mixing \cite{JLT2012}. We will show that the thermodynamic entropy is a reasonable choice of mixing and that the problem is well-suited for methods in the developing field of stochastic thermodynamics \cite{Seifert2012a}, but we acknowledge that it has drawbacks for similar reasons as the scalar variance, a popular choice of mixing. 
+
+In particular we seek to maximize the nonequilibrium Gibbs entropy defined by 
+
+\begin{equation}
+S(\rho)\equiv - \int_{\Omega} \rho (\mathbf{x},t) \ln \rho (\mathbf{x},t) d^{d}\mathbf{x}.
+\end{equation}
+
+Suppose one is given an initial distribution $\rho(\mathbf{x},0)=\rho_{0}(\mathbf{x})
+$ with low entropy $S(\rho_{0})$.  We wish to find the incompressible velocity field $\mathbf{u}$ which would maximize mixing  quantified by entropy. It can be shown that the maximum entropy is achieved for the distribution $\rho_{s}(\mathbf{x})=\frac{1}{|\Omega|}$ which can be shown to be the limiting distribution. We wish to accelerate this convergence for an optimal choice of $\mathbf{u}$ and characterize the mixing rate enhancement.
+
+\section{Entropy as a measure of mixing}
+
+
+
+\section{Stochastic thermodynamics}
+
+We interpret the advection-diffusion equation as the Fokker-Planck equation describing the overdamped dynamics of a brownian particle in contact with a heat bath at fixed temperature $T$. This particle is subjected to an external {\it incompressible} force $\mathbf{f}(\mathbf{x},t)$, a drag force proportional to $\dot{\mathbf{x}}$, and thermal noise force $\mathbf{\xi}$.  The particle does {\it not} experience a gradient potential; The potential $V(\mathbf{x})$ is zero over the entire domain $\Omega$.  The associated Langevin equation governing the particle's trajectory is 
+\begin{equation}
+\dot{\mathbf{x}} = \mu \mathbf{f}(\mathbf{x},t) + \mathbf{\xi}
+\end{equation}
+where $\mu$ is the mobility coefficient. The thermal forcing is guassian white noise with $\langle \mathbf{\xi}(t)\mathbf{\xi}(t') \rangle = 2\kappa\delta ( t- t')$.  The diffusion coefficient $\kappa$ is related to the temperature $T$ by the Einstein relation $\kappa = \mu T$.
+Now, we find that the corresponding Fokker-Planck equation is given by 
+\begin{equation}
+\label{eq:fpe}
+\partial_t \rho + \mu\mathbf{f}\cdot \nabla \rho =  \kappa\Delta \rho
+\end{equation}
+where $\rho(\mathbf{x},t)$ is the probability of observing a particle at position $\mathbf{x}$ and $t$. Now, we compare (\ref{eq:fpe}) to (\ref{eq:ade}) and identify the velocity by $\mathbf{u}=\mu \mathbf{f}$.  In this framework, the mixing problem of section \ref{sec:mixing} can be seen as provided with a fixed amount of work budget, how can one accelerate the rate of convergence to the equilibrium distribution $\rho=\rho_{eq}=\frac{1}{|\Omega|}$.  The incremental work done on the particle is given by 
+\begin{equation}
+\text{\textcrd}w=\mathbf{f}\cdot \text{d}\mathbf{x}
+\end{equation}
+Since $V(x)=0$ throughout $\Omega$, the internal energy of the particle is given by $\text{d}E=\text{d}V=0$. By the first law \cite{Sekimoto1998}, \textcrd $q =\, $\textcrd$w   \,- $ d$E $,  we have that  \textcrd $q  =\,  $\textcrd$w$. Therefore all the work imparted by $\mathbf{f}$ onto the particle is dissipated as heat into the medium. The total work $w$ imparted on the particle is given by \cite{Seifert2012a}
+\begin{equation}
+\label{eq:work}
+w[\mathbf{x}(t)]=\int_0^t \mathbf{f}(\mathbf{x}(\tau),\tau)\cdot \dot{\mathbf{x}}\,\, \text{d}\tau.
+\end{equation} 
+We can evaluate this expression by using the path integral formulation \cite{Kurchan1998a, Seifert2012a, Seifert2005} of \ref{eq:fpe} to find that
+\begin{equation}
+w[\mathbf{x}(t)]=T\ln \frac{p[\mathbf{x}(t) | \mathbf{x}_{0}]}{p[\tilde{\mathbf{x}}(t) | \tilde{\mathbf{x}}_{0}]}
+\end{equation}
+where $\tilde{\mathbf{x}}(\tau)\equiv \mathbf{x}(t-\tau)$ is the reversed trajectory of $\mathbf{x}$ and $\tilde{\mathbf{x}}_0=\mathbf{x}(t)$. We can rearrange terms to find \cite{Tolman1924,Crooks1999}
+\begin{equation}
+\frac{p[\mathbf{x}(t) | \mathbf{x}_{0}]}{p[\tilde{\mathbf{x}}(t) | \tilde{\mathbf{x}}_{0}]}=e^{w[\mathbf{x}(t)]/T}.
+\end{equation}
+This states the connection between heat/work and reversibility; The probability of traversing the reversed path $\tilde{\mathbf{x}}$ is exponentially less likely than the forward path $\mathbf{x}$ by the factor $e^{w[\mathbf{x}(t)]/T}$. The entropy lost to the medium is given by 
+\begin{equation}
+\Delta s_{m}=\frac{q[\mathbf{x}(t)]}{T}=\frac{w[\mathbf{x}(t)]}{T}=\ln \frac{p[\mathbf{x}(t) | \mathbf{x}_{0}]}{p[\tilde{\mathbf{x}}(t) | \tilde{\mathbf{x}}_{0}]}
+\end{equation}
+
+For sake of clarity, we rederive the steps laid out first by Seifert 2005 \cite{Seifert2005} to derive Seifert's entropy fluctuation theorem. We introduce $R$ as
+\begin{equation}
+\label{eq:R}
+R[p_{0},p_{1}] \equiv \ln \frac{p[\mathbf{x}(t) | \mathbf{x}_{0}]p_0(\mathbf{x}_0)}{p[\tilde{\mathbf{x}}(t) | \tilde{\mathbf{x}}_{0}]p_1(\tilde{\mathbf{x}}_0)} = \Delta s_{m} + \ln \frac{p_0(\mathbf{x}_0)}{p_{1}(\tilde{\mathbf{x}}_0)}
+\end{equation}
+which depends on an arbitrary choise of $p_0$ and $p_1$. 
+We compute the following expectation value
+\begin{eqnarray}
+\langle e^{-R}\rangle &=& \sum_{\mathbf{x}(t),\mathbf{x}_{0}} p[\mathbf{x}(t)|\mathbf{x}_0]p_{0}(\mathbf{x}_{0})e^{-R} \\
+&=& \sum_{\tilde{\mathbf{x}}(t),\tilde{\mathbf{x}}_{0}}  p[\tilde{\mathbf{x}}(t) | \tilde{\mathbf{x}}_{0}]p_1(\tilde{\mathbf{x}}_0) = 1
+\end{eqnarray}
+By choosing  $p_{1}(\mathbf{x}(t))=\rho(\mathbf{x}(t),t)$, the second term of (\ref{eq:R}) becomes $\Delta s$ where  $s$ is the entropy along a trajectory defined as \cite{Crooks1999,Seifert2005,Qian2002}  $s \equiv -\ln \rho(\mathbf{x}(t),t)$. Therefore $R = \Delta s_{\text{tot}}= \Delta s_m+ \Delta s$.
+Thus, we arrive Siefert's fluctuation theorem,
+\begin{equation}
+\langle e^{- \Delta s_{\text{tot}}}\rangle = 1 .
+\end{equation}
+
+Using 
+\begin{equation}
+\Delta s_{\text{tot}}= w/T + \Delta s, 
+\end{equation}
+we find that
+\begin{equation}
+\langle e^{- w/T - \Delta s}\rangle = 1 .
+\end{equation}
+
+Therefore by Jensen's inequality, we find that 
+\begin{equation}
+\langle  \Delta s_{\text{tot}} \rangle \geq 0 
+\end{equation}
+
+Therefore we find that
+\begin{equation}
+\langle  \Delta s_m \rangle \geq  - \langle \Delta s \rangle  . 
+\end{equation}
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{mixing}
+
+\end{document}

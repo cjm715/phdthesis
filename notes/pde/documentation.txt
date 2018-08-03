@@ -1,0 +1,9 @@
+Documentation on mixing
+
+REQUIREMENTS
+* numpy
+* matplotlib
+* pyfftw
+
+USAGE
+* mixing.py contains ScalarAdvection class.

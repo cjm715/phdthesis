@@ -1,0 +1,77 @@
+\contentsline {chapter}{DEDICATION}{ii}{Doc-Start}
+\contentsline {chapter}{ACKNOWLEDGEMENTS}{iii}{Doc-Start}
+\contentsline {chapter}{LIST OF FIGURES}{vii}{Doc-Start}
+\contentsline {chapter}{LIST OF APPENDICES}{x}{Doc-Start}
+\contentsline {chapter}{ABSTRACT}{xi}{Doc-Start}
+\mbox { }\newline \noindent {\bf CHAPTER}\newline 
+\hbox { }
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf I.\hspace {5pt}}{\bf Introduction}}{1}{chapter.1}
+\hbox { }
+\contentsline {section}{\numberline {1.1}Why study fluid mixing?}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}What does well-mixed mean?}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Fluid mixing stages and mechanisms}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}A mathematical framework for studying mixing}{4}{section.1.4}
+\contentsline {section}{\numberline {1.5}Pure diffusive mixing}{7}{section.1.5}
+\contentsline {section}{\numberline {1.6}Pure advective mixing}{7}{section.1.6}
+\contentsline {section}{\numberline {1.7}The interplay of advection and diffusion}{9}{section.1.7}
+\contentsline {section}{\numberline {1.8}The question and goals}{10}{section.1.8}
+\contentsline {section}{\numberline {1.9}Organization of dissertation}{11}{section.1.9}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf II.\hspace {5pt}}{\bf Shell model}}{13}{chapter.2}
+\hbox { }
+\contentsline {section}{\numberline {2.1}Introduction}{13}{section.2.1}
+\contentsline {section}{\numberline {2.2}A shell model}{14}{section.2.2}
+\contentsline {section}{\numberline {2.3}Instantaneous optimization}{16}{section.2.3}
+\contentsline {section}{\numberline {2.4}Global-in-time optimization}{17}{section.2.4}
+\contentsline {section}{\numberline {2.5}Mixing without diffusion}{19}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Local-in-time strategy for infinite system}{19}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Global-in-time strategy for 3-shell truncated model with enstrophy constraint}{22}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Global-in-time strategy for N-shell truncated models}{26}{subsection.2.5.3}
+\contentsline {section}{\numberline {2.6}Mixing with diffusion}{28}{section.2.6}
+\contentsline {section}{\numberline {2.7}Discussion}{33}{section.2.7}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf III.\hspace {5pt}}{\bf Local-in-time optimization}}{38}{chapter.3}
+\hbox { }
+\contentsline {section}{\numberline {3.1}Introduction}{38}{section.3.1}
+\contentsline {section}{\numberline {3.2}Theory}{39}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Local-in-time flow optimization}{39}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Shell model predictions of local-in-time optimization}{41}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Bounds for $L^{\infty }$ constrained flows}{42}{subsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.3.1}Results for $\delimiter "026B30D \nabla \mathbf {u} \delimiter "026B30D _{L^{\infty }} = 1$}{42}{subsubsection.3.2.3.1}
+\contentsline {subsubsection}{\numberline {3.2.3.2}Results for $\delimiter "026B30D \mathbf {u} \delimiter "026B30D _{L^{\infty }}= 1$}{43}{subsubsection.3.2.3.2}
+\contentsline {section}{\numberline {3.3}Numerical experiment: local-in-time optimization}{45}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Methodology}{45}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Results}{46}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Discussion}{54}{section.3.4}
+\contentsline {section}{\numberline {3.5}Conclusion}{56}{section.3.5}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf IV.\hspace {5pt}}{\bf Global-in-time optimization}}{57}{chapter.4}
+\hbox { }
+\contentsline {section}{\numberline {4.1}Introduction}{57}{section.4.1}
+\contentsline {section}{\numberline {4.2}Theory}{58}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}The optimal control problem}{58}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}First and total variation for enstrophy-constraint}{58}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}First and total variation for energy constraint}{61}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Optimal control problem with inequality constraints}{63}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Numerical method for pure advection ($\kappa = 0$)}{64}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Gradient descent algorithm}{64}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Target algorithm}{67}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Results for pure advection ($\kappa = 0$)}{69}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Optimal budget use is uniform in time}{69}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Comparison with local-in-time optimization}{71}{subsection.4.4.2}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf V.\hspace {5pt}}{\bf Conclusion and Future Directions}}{74}{chapter.5}
+\hbox { }
+\contentsline {chapter}{APPENDICES}{78}{equation.5.0.2}
+\contentsline {section}{\numberline {A.1}Lower bound for non-diffusive enstrophy-constrained case}{79}{section.A.1}
+\contentsline {section}{\numberline {A.2}Lower bound for non-diffusive energy-constrained case}{80}{section.A.2}
+\contentsline {section}{\numberline {A.3}Global-in-time optimal strategy requires uniform use of budget in time}{82}{section.A.3}
+\contentsline {section}{\numberline {A.4}Optimal control solution to 3-shell truncated model}{83}{section.A.4}
+\contentsline {section}{\numberline {A.5}State solution to 3-shell truncated model}{84}{section.A.5}
+\contentsline {section}{\numberline {A.6}Perfect mixing in finite time is impossible with diffusion}{86}{section.A.6}
+\contentsline {section}{\numberline {B.1}Local-in-time optimization code: lit.py}{92}{section.B.1}
+\contentsline {section}{\numberline {B.2}Local-in-time optimization code: tools.py}{104}{section.B.2}
+\contentsline {section}{\numberline {C.1}Total variation calculation}{117}{section.C.1}
+\contentsline {section}{\numberline {C.2}Global-in-time optimization code: git.py}{120}{section.C.2}
+\contentsline {chapter}{BIBLIOGRAPHY}{128}{lstnumber.-3.209}

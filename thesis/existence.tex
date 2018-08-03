@@ -1,0 +1,41 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{dsfont}
+\title{Optimal control problem}
+%\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+Consider the optimal control problem:
+\begin{equation}
+\min_{\mathbf{u}\in A} J[\mathbf{u}] \equiv \|\nabla^{-1}\theta( \,\cdot\, , T)\|^2_{L^{2}(\Omega)}
+\end{equation}
+with the constraints and definitions:
+\begin{itemize}
+\item $\partial_{t} \theta + \mathbf{u}\cdot \nabla \theta = \kappa \Delta \theta , \theta(x,0)=\theta_0(\mathbf{x})$
+\item Let $A$ be the set of admissible controls. $A = \{ \mathbf{u} \, | \, \nabla \cdot \mathbf{u} = 0$ a.e. in $ \Omega, \|\nabla\mathbf{u}\|_{L^2(\Omega)}\leq 1 \}$
+\item All functions are periodic.
+\item $\mathbf{x}\in \Omega = [0,L]^d , t\in[0,T]$.
+\end{itemize}
+
+\
+
+{\it Sketch of incomplete proof of the existence of a minimizer:}
+
+Since $J[\mathbf{u}] \geq 0$, then the $\inf J[\mathbf{u}]=m$ is finite. Then there exists a sequence $\{\mathbf{u}_{n}\}_{n=1}^{\infty}$ such that $J[\mathbf{u}_{n}]\rightarrow m$.
+It can be shown that the subset $A \subset H^{1}$ is closed, convex, and bounded. Since in addition $H^1$ is reflexive, it follows that there exists a subsequence  $\{\mathbf{u}_{n_k}\}_{k=1}^{\infty}$ that converges weakly in $H^{1}$ to some $\mathbf{u} \in A$. 
+
+It can be shown that $J[\mathbf{u}]: H^1 \rightarrow \mathds{R}$  is strongly continuous on $A$. However we need $J[\mathbf{u}]$ to be {\it weakly} lower semicontinuous to complete the proof. 
+
+\end{document}  

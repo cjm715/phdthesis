@@ -1,0 +1,273 @@
+% The packages used here are just a sample. You may need others, and may not need some of these. It doesn't hurt to leave them in, unless they start to conflict with other packages you've added. Chapter 2 has example code for equations, figures, tables, citations, abbreviations, etc. If there are sections labeled 'optional' that you don't want, just comment them out. -jg
+
+\documentclass[reqno,hidelinks,12pt,oneside]{report} % right-side equation numbering, 12 point font, print one-sided 
+%\documentclass[reqno,12pt,twoside,openright]{report} % right-side equation numbering, 12 point font, print two-sided, Chapters start on odd pages. Rackham only accepts one-sided, so this is for personal printings.
+
+\usepackage{rac}         % Use Rackham thesis style file
+\usepackage{aas_macros}  % To allow the reading of ADS journal references in the bibliography
+\usepackage[intlimits]{amsmath} % Puts the limits of integrals on top and bottom
+\usepackage{amsxtra}     % Use various AMS packages
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}    % Add some packages for figures. Read epslatex.pdf on ctan.tug.org
+\usepackage{rotating}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{subfigure}   % To make subfigures. Read subfigure.pdf on ctan.tug.org
+\usepackage{verbatim}
+\usepackage{natbib}      % Allows you to use BibTeX
+\usepackage[printonlyused]{acronym} % For the List of Abbreviations. Read acronym.pdf on ctan.tug.org
+\usepackage{setspace}    % Allows you to specify the line spacing
+\doublespacing           % \onehalfspacing for 1.5 spacing, \doublespacing for 2.0 spacing.
+%\onehalfspacing
+\newcommand{\sun}{\ensuremath{\odot}} % sun symbol is \sun
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Various theorem environments. All of the following have the same numbering
+% system as theorem.
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{introduction}[theorem]{Introduction}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\numberwithin{theorem}{chapter}     % Numbers theorems "x.y" where x
+                                    % is the section number, y is the
+                                    % theorem number
+
+%\renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
+
+%\makeatletter                      % This sequence of commands will
+%\let\c@equation\c@theorem          % incorporate equation numbering
+%\makeatother                       % into the theorem numbering scheme
+
+%\renewcommand{\theenumi}{(\roman{enumi})}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% If printing two-sided, this makes sure that any blank page at the 
+% end of a chapter will not have a page number. 
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- my own packages
+\usepackage{IEEEtrantools}
+\usepackage{ dsfont }
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{listings}
+
+% --- my own commands
+%\newcommand{\hmone}[1]{\|#1\|_{h^{-1}}}
+%\newcommand{\ltwo}[1]{\|#1\|_{l^{2}}}
+%\newcommand{\hone}[1]{\|#1\|_{h^{1}}}
+%\newcommand{\htwo}[1]{\|#1\|_{h^{2}}}
+
+\newcommand{\ddt}[1]{\frac{d #1}{dt}}
+%\newcommand{\hmone}[1]{\|#1\|_{H^{-1}}}
+\newcommand{\hmone}[1]{\|\nabla^{-1} #1\|_{L^{2}}}
+\newcommand{\ltwo}[1]{\|#1\|_{L^{2}}}
+%\newcommand{\hone}[1]{\|#1\|_{H^{1}}}
+\newcommand{\hone}[1]{\| \nabla #1\|_{L^{2}}}
+\newcommand{\htwo}[1]{\|#1\|_{H^{2}}}
+\newcommand{\sint}[1]{\int_{D} #1 \, d^{d}\mathbf{x}}
+\newcommand{\tint}[1]{\int_{0}^{T} #1 \, dt}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\linf}[1]{\| #1 \|_{L^{\infty}}}
+\newcommand{\tavg}[1]{\langle  #1 \rangle}
+\renewcommand{\u}{\mathbf{u}}
+%\newcommand{\ppt}[1]{\frac{\partial #1}{\partial t}}
+\newcommand{\ppt}[1]{\partial_{t} #1}
+\newcommand{\lap}{\Delta }
+\newcommand{\invlap}{\Delta^{-1}}
+%\newcommand{\lap}{\nabla^{2}}
+%\newcommand{\invlap}{\nabla^{-2}}
+\newcommand{\pbrac}[1]{\left( #1 \right)}
+\newcommand{\sbrac}[1]{\left[ #1 \right]}
+
+
+
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=1,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+
+\lstset{style=mystyle}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+%\usepackage[hidelinks]{hyperref} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%This command creates a box marked ``To Do'' around text.
+%To use type \todo{  insert text here  }.
+
+\newcommand{\todo}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{To Do}}
+\framebox{\begin{minipage}[c]{0.95 \textwidth}
+\tt\begin{center} #1 \end{center}\end{minipage}}\vspace{5 mm}\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\bibliographystyle{plain}    % Set the bibliography style. agu04, plain, alpha, etc.
+
+% Title page as required by Rackham dissertation guidelines
+\titlepage{Optimal Control of the Advection-Diffusion Equation for Effective Fluid Mixing}{Christopher J. Miles}{Doctor of Philosophy}
+{Physics}{2018}
+{  Professor Charles Doering, Chair \\
+  Professor Anthony Bloch\\
+ Assistant Professor Jesse Capecelatro\\
+  Associate Professor Robert Deegan \\
+  Professor Mark Newman}
+
+% Begin the front matter as required by Rackham dissertation guidelines
+\initializefrontsections
+
+% Optional Frontispiece
+% \frontispiece{\includegraphics[width=6in]{ch-lit/images/enstrophy_film}}
+
+% Optional, but recommended, Copyright page
+\copyrightpage{Christopher J. Miles}
+
+% Page numbering. If you don't include a frontispiece or copyright page, you'll need to change this for two-sided printing.
+\makeatletter
+\if@twoside \setcounter{page}{4} \else \setcounter{page}{1} \fi
+\makeatother
+ 
+% Optional Dedication page
+\dedicationpage{ To my parents, teachers, and mentors who have provided encouragement throughout my life.}
+
+% Optional Acknowledgements page
+\startacknowledgementspage
+\input{front-matter/acknowledgements}
+\label{Acknowledgements}
+
+% Optional Preface page
+%\startprefacepage
+%\input{front-matter/preface}
+%\label{Preface}
+
+% Table of contents, list of figures, etc.
+\tableofcontents     % Required
+\listoffigures       % Required if there is more than one figure
+%\listoftables        % Required if there is more than one table
+%\listofmaps          % Required if there is more than one map
+\listofappendices    % Required if there is more than one appendix
+% \listofabbreviations % Optional. Abbreviations should be stored in a file named abbr.tex. Use ac{ } when referring to a particular acronym in text. For example, the tex file may read " \ac{MHD} is challenging field ..." and will appear in the PDF as "magnetohydrodynamic (MHD) is a challenging field..."  The first time you use an acronym, the full name of the acronym along with the acronym in brackets will be printed. If you specify the footnote option while loading the package, the full name of the acronym is printed as a footnote. The next time you access the acronym only the acronym will be printed. Note the acronym package does not support automatic capitalization at the beginning of sentences. A work around is to type in latex "Magnetohydrodynamic \acused{MHD} (\ac{MHD}) is a challenging field ... ".
+
+
+% Optional in-dissertation Abstract Page
+\startabstractpage
+\input{front-matter/abstract}
+\label{Abstract}
+
+\startthechapters 
+% The individual files for each of the chapters are put here.
+% Save each chapter of your thesis to a seperate tex file
+% and then use the \input command to include this file in your
+% thesis.  For instance you can save a file to "intro.tex" and 
+% then type \input{intro}. 
+
+ \chapter{Introduction}
+ \label{chap:introduction}
+ \input{ch-introduction/ch-introduction}
+\chapter[Shell model]{Shell model \footnote{The content of this chapter has been published in the Journal of Nonlinear Science (2017) \cite{Miles2017a}.}}
+% \chapter{Shell model}  \footnote{footnotes working fine}
+\label{chap:shellmodel}
+ \input{ch-shellmodel/ch-shellmodel}
+ 
+ \chapter[Local-in-time optimization]{Local-in-time optimization \footnote{The content of this chapter is included  within a journal article accepted for publication in Nonlinearity \cite{Miles2018}.}}
+ \label{chap:lit}
+ \input{ch-lit/ch-lit}
+ 
+ \chapter{Global-in-time optimization}
+ \label{chap:git}
+ \input{ch-git/ch-git}
+
+ \chapter{Conclusion and Future Directions}
+ \label{chap:conclusion}
+ \input{ch-conclusion/ch-conclusion}
+ 
+\startappendices
+ \appendix{Shell model}
+ \label{app:shellmodel}
+ \input{ch-shellmodel/appendix}
+ 
+  \appendix{Local-in-time optimization}
+ \label{app:lit}
+ \input{ch-lit/appendix}
+ 
+  \appendix{Global-in-time optimization}
+ \label{app:git}
+ \input{ch-git/appendix}
+ 
+ 
+% 
+\startbibliography
+ \begin{singlespace} % Bibliography must be single spaced
+  \bibliography{../../library}   % Use the BibTeX file ``References.bib''.
+ \end{singlespace}
+
+% An external Abstract that can be printed at the end of the document, 
+% for separate submission to Rackham. Comment it out when not needed. - jg
+%\startextabstractpage
+%{The Title of Your Dissertation}{Your Name}{Chair: Albert Einstein}
+%\input{Abstract/Abstract}
+%\label{ExtAbstract}
+
+\end{document}

@@ -1,5 +1,5 @@
 # PhD thesis
 
-Title: The impact of advection and diffusion on fluid mixing performance
+Optimal Control of the Advection-Diffusion Equation for Effective Fluid Mixing
 
 Christopher J. Miles
